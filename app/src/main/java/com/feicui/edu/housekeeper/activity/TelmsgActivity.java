@@ -1,4 +1,4 @@
-package com.feicui.edu.housekeeper;
+package com.feicui.edu.housekeeper.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TelclassAdapter;
 import com.feicui.edu.housekeeper.db.AssetsDBManager;
 import com.feicui.edu.housekeeper.db.DBReader;
@@ -69,6 +70,9 @@ public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnI
         //取出当前选择的选项实体内容
         TelclassInfo classInfo = adapter.getItem(position);
         //跳转至电话浏览界面
+        Intent intent = new Intent(this, TellistActivity.class);
+        intent.putExtra("idx", classInfo.idx);
+        startActivity(intent);
 
 
     }
