@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:orientation="vertical"
+    tools:context="com.feicui.edu.housekeeper.TelmsgActivity">
+    <TextView
+        android:id="@+id/tv_tel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="一站式号码服务平台"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:background="#6495ED"
+        />
+    <ListView
+        android:id="@+id/lv_tel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+       />
+</LinearLayout>
