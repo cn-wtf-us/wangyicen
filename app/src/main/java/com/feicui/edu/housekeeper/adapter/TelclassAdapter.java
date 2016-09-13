@@ -53,7 +53,7 @@ public class TelclassAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public TelclassInfo getItem(int position) {
         return adapterDatas.get(position);
     }
 
@@ -68,7 +68,8 @@ public class TelclassAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.inflate_telmsg_listitem, null);
         }
         TextView tv_text = (TextView) convertView.findViewById(R.id.tv_list_item);
-        tv_text.setText(getItem(position).toString());
+//        TelclassInfo item = (TelclassInfo) getItem(position);
+        tv_text.setText(getItem(position).name);
         return convertView;
     }
 }
