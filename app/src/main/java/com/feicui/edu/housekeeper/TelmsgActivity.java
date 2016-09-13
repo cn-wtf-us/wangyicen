@@ -68,6 +68,7 @@ public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnI
         }
         //取出当前选择的选项实体内容
         TelclassInfo classInfo = adapter.getItem(position);
+        //跳转至电话浏览界面
 
 
     }
