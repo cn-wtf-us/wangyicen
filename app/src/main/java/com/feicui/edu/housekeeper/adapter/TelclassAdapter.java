@@ -69,6 +69,7 @@ public class TelclassAdapter extends BaseAdapter {
         }
         TextView tv_text = (TextView) convertView.findViewById(R.id.tv_list_item);
 //        TelclassInfo item = (TelclassInfo) getItem(position);
+//        tv_text.setText(item.name);
         tv_text.setText(getItem(position).name);
         return convertView;
     }
