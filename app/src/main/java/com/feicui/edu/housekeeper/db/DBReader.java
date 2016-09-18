@@ -15,7 +15,11 @@ import java.util.ArrayList;
  */
 public class DBReader {
 
-    public static File file = new File("data/data/com.feicui.edu.housekeeper/commonnum.db");
+    public static File file = new File("data/data/com.feicui.edu.housekeeper/commonnum.db/");
+    //打开DB文件
+    private static SQLiteDatabase db = null;
+    //执行查询的SQL语句select * from classlist
+    private static Cursor cursor = null;
 
     /*public static File telFile;
     static {
@@ -41,11 +45,6 @@ public class DBReader {
     }*/
     public static ArrayList<TelclassInfo> readTeldbClasslist() throws Exception {
         ArrayList<TelclassInfo> classlistInfos = new ArrayList<TelclassInfo>();
-        //打开DB文件
-        SQLiteDatabase db = null;
-        //执行查询的SQL语句select * from classlist
-        Cursor cursor = null;
-        // try {
         if (isExistsTeldbFile()) {
             db = SQLiteDatabase.openOrCreateDatabase(file, null);
             cursor = db.rawQuery("select * from classlist", null);
@@ -67,8 +66,6 @@ public class DBReader {
     public static ArrayList<TelnumberInfo> readTeldbTable(int idx) {
         ArrayList<TelnumberInfo> numberInfos = new ArrayList<TelnumberInfo>();
         String sql = "select * from table" + idx;
-        SQLiteDatabase db = null;
-        Cursor cursor = null;
         if (isExistsTeldbFile()) {
             //打开db文件
             db = SQLiteDatabase.openOrCreateDatabase(file, null);

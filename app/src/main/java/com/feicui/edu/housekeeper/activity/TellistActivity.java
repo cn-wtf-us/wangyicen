@@ -30,7 +30,7 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_tel_list);
 
         //获取数据用来判断是显示哪一种分类的电话号码
-        idx = getIntent().getIntExtra("idx", -1);
+        idx = getIntent().getIntExtra("idx", 1);
 
         listView = (ListView) findViewById(R.id.list_item);
         listView.setOnItemClickListener(this);
