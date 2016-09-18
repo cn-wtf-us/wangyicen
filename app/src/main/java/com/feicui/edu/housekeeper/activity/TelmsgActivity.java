@@ -33,14 +33,13 @@ public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnI
     //初始化数据库文件
     private void initAppDBFile(){
         //检测是否存在DB文件
-        if (!DBReader.isExistsTeldbFile()){
+        if (!DBReader.isExistsTeldbFile()) {
             try {
-                AssetsDBManager.copyAssetsFileToFile(getApplicationContext(), "commonnum.db", DBReader.telFile);
+                AssetsDBManager.copyAssetsFileToFile(getApplicationContext(), "db/commonnum.db",DBReader.file.toString());
             } catch (IOException e) {
-                ToastUtil.show(this, "数据库文件异常", Toast.LENGTH_SHORT);
+                ToastUtil.show(this, "数据库文件异常...", Toast.LENGTH_SHORT);
             }
         }
-
     }
 
     @Override

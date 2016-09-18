@@ -14,8 +14,10 @@ import java.util.ArrayList;
  * Created by Administrator on 2016/9/13 0013.
  */
 public class DBReader {
-    public static File telFile;
 
+    public static File file = new File("data/data/com.feicui.edu.housekeeper/commonnum.db");
+
+    /*public static File telFile;
     static {
         String dbFileDir = "data/data/commonnum.db";
 
@@ -23,77 +25,67 @@ public class DBReader {
         fileDir.mkdirs();
         telFile = new File(dbFileDir, "commonnum.db");
         LogUtil.d("DBReader", "telFile Dir path:" + dbFileDir);
-    }
-
+    }*/
     public static boolean isExistsTeldbFile() {
-        File toFile = DBReader.telFile;
+        if (file.exists() && file.length() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /*public static boolean isExistsTeldbFile() {
+        File toFile = DBReader.file;
         if (!toFile.exists() || toFile.length() <= 0) {
             return false;
         }
         return true;
-    }
-    public static ArrayList<TelclassInfo> readTeldbClasslist() throws Exception{
-        ArrayList<TelclassInfo> classlistInfos =new ArrayList<TelclassInfo>();
+    }*/
+    public static ArrayList<TelclassInfo> readTeldbClasslist() throws Exception {
+        ArrayList<TelclassInfo> classlistInfos = new ArrayList<TelclassInfo>();
         //打开DB文件
         SQLiteDatabase db = null;
         //执行查询的SQL语句select * from classlist
         Cursor cursor = null;
-        try {
-            db = SQLiteDatabase.openOrCreateDatabase(telFile, null);
+        // try {
+        if (isExistsTeldbFile()) {
+            db = SQLiteDatabase.openOrCreateDatabase(file, null);
             cursor = db.rawQuery("select * from classlist", null);
             LogUtil.d("DBRead", "read teldb classlist size:" + cursor.getCount());
-            if (cursor.moveToFirst()){
-                do {
-                    String name =cursor.getString(cursor.getColumnIndex("name"));
-                    int idx = cursor.getInt(cursor.getColumnIndex("idx"));
-                    TelclassInfo classlistInfo =new TelclassInfo(name, idx);
-                    classlistInfos.add(classlistInfo);
-                }while (cursor.moveToNext());
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                int idx = cursor.getInt(cursor.getColumnIndex("idx"));
+                TelclassInfo classlistInfo = new TelclassInfo(name, idx);
+                classlistInfos.add(classlistInfo);
             }
-        }catch (Exception e){
-            throw e;
-        }finally {
-            try {
-                cursor.close();
-                db.close();
-            }catch (Exception e2){
-                throw e2;
-            }
-            LogUtil.d("DBRead", "read teldb classlist end [list size]" + classlistInfos.size());
+            cursor.close();
+            db.close();
+            return classlistInfos;
+        } else {
+            LogUtil.d("DBRead", "数据库文件没有找到...");
+            return null;
         }
-        return classlistInfos;
     }
-
-    public static ArrayList<TelnumberInfo> readTeldbTable(int idx){
+    public static ArrayList<TelnumberInfo> readTeldbTable(int idx) {
         ArrayList<TelnumberInfo> numberInfos = new ArrayList<TelnumberInfo>();
         String sql = "select * from table" + idx;
         SQLiteDatabase db = null;
         Cursor cursor = null;
-        try {
+        if (isExistsTeldbFile()) {
             //打开db文件
-            db = SQLiteDatabase.openOrCreateDatabase(telFile, null);
+            db = SQLiteDatabase.openOrCreateDatabase(file, null);
             cursor = db.rawQuery(sql, null);
             LogUtil.d("DBRead", "read teldb number table size:" + cursor.getCount());
-            if (cursor.moveToFirst()){
-                do {
-                    String name =cursor.getString(cursor.getColumnIndex("name"));
-                    String number = cursor.getString(cursor.getColumnIndex("number"));
-                    TelnumberInfo numberInfo =new TelnumberInfo(name, number);
-                    numberInfos.add(numberInfo);
-                }while (cursor.moveToNext());
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                String number = cursor.getString(cursor.getColumnIndex("number"));
+                TelnumberInfo numberInfo = new TelnumberInfo(name, number);
+                numberInfos.add(numberInfo);
             }
-        }catch (Exception e){
-            throw e;
-        }finally {
-            try {
-                cursor.close();
-                db.close();
-            }catch (Exception e2){
-                throw e2;
-            }
+            cursor.close();
+            db.close();
+            return numberInfos;
+        } else {
             LogUtil.d("DBRead", "read teldb number table end [list size]" + numberInfos.size());
+            return null;
         }
-        return numberInfos;
     }
-
 }

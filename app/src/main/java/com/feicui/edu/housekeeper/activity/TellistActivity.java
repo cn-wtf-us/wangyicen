@@ -1,8 +1,11 @@
 package com.feicui.edu.housekeeper.activity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +17,6 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TellistAdapter;
 import com.feicui.edu.housekeeper.db.DBReader;
 
-import java.io.IOException;
 
 public class TellistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -55,7 +57,7 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
         showCallDialog(name, number);
     }
 
-    private void showCallDialog(final String name, final String number){
+    private void showCallDialog(final String name, final String number) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("警告");
         builder.setMessage("是否开始拨打" + name + "电话？\n\nTEL:" + number);
@@ -66,7 +68,17 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
                 //电话拨打
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel://" + number));
-                //startActivity(intent);
+                if (ActivityCompat.checkSelfPermission(TellistActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                startActivity(intent);
 
             }
         });
