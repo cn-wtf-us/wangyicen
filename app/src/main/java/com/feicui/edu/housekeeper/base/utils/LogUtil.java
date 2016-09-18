@@ -1,4 +1,4 @@
-package com.feicui.edu.housekeeper.utils;
+package com.feicui.edu.housekeeper.base.utils;
 
 import android.util.Log;
 

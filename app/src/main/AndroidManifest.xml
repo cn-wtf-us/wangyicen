@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".activity.TelmsgActivity" />
         <activity android:name=".activity.TellistActivity" />
+        <activity android:name=".base.activity.BaseActivity" />
+        <activity android:name=".base.activity.BaseActionbarActivity"></activity>
     </application>
 
 </manifest>

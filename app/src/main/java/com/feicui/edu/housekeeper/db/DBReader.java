@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.feicui.edu.housekeeper.entity.TelclassInfo;
 import com.feicui.edu.housekeeper.entity.TelnumberInfo;
-import com.feicui.edu.housekeeper.utils.LogUtil;
+import com.feicui.edu.housekeeper.base.utils.LogUtil;
 
 import java.io.File;
 import java.util.ArrayList;

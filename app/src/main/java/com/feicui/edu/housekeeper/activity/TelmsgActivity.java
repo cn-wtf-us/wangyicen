@@ -13,7 +13,7 @@ import com.feicui.edu.housekeeper.adapter.TelclassAdapter;
 import com.feicui.edu.housekeeper.db.AssetsDBManager;
 import com.feicui.edu.housekeeper.db.DBReader;
 import com.feicui.edu.housekeeper.entity.TelclassInfo;
-import com.feicui.edu.housekeeper.utils.ToastUtil;
+import com.feicui.edu.housekeeper.base.utils.ToastUtil;
 
 import java.io.IOException;
 
