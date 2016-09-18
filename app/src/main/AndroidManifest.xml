@@ -22,7 +22,8 @@
         <activity android:name=".activity.TelmsgActivity" />
         <activity android:name=".activity.TellistActivity" />
         <activity android:name=".base.activity.BaseActivity" />
-        <activity android:name=".base.activity.BaseActionbarActivity"></activity>
+        <activity android:name=".base.activity.BaseActionbarActivity" />
+        <activity android:name=".activity.LeadActivity"></activity>
     </application>
 
 </manifest>

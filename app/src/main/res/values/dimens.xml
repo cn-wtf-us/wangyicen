@@ -2,4 +2,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Lead 页面-->
+    <dimen name="lead_icons_margin_bottom">60dip</dimen>
+    <dimen name="lead_icons_width">10dip</dimen>
+    <dimen name="lead_icons_height">10dip</dimen>
+    <dimen name="lead_icons_margin">5dip</dimen>
+    <dimen name="lead_skip_margin_right">18dip</dimen>
+    <dimen name="lead_skip_margin_top">18dip</dimen>
+    <dimen name="app_listitem_horizontal_margin">16dp</dimen>
+
 </resources>
