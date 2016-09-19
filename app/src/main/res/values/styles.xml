@@ -7,5 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!-- 引导界面ImageView -->
+    <style name="LeadImageView">
+        <item name="android:layout_width">@dimen/lead_icons_width</item>
+        <item name="android:layout_height">@dimen/lead_icons_height</item>
+        <item name="android:layout_margin">@dimen/lead_icons_margin</item>
+        <item name="android:src">@drawable/adware_style_default</item>
+    </style>
 
 </resources>
