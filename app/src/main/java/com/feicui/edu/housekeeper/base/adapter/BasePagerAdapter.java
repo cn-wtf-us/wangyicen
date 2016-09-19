@@ -1,10 +1,13 @@
 package com.feicui.edu.housekeeper.base.adapter;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.feicui.edu.housekeeper.fragment.ViewPagerFragment;
+
+import java.util.Random;
 
 /**
  * Created by asus on 2016/9/18.
@@ -12,9 +15,14 @@ import com.feicui.edu.housekeeper.fragment.ViewPagerFragment;
 public class BasePagerAdapter extends FragmentStatePagerAdapter {
 
     private int count;
-
+    int[] colors;
+    Random random = new Random();
     public void setCount(int count) {
         this.count = count;
+        colors = new int[count];
+        for (int i = 0; i < count; i++) {
+            colors[i] = Color.rgb(random.nextInt(256), random.nextInt(256), random.nextInt(256));
+        }
     }
 
     public BasePagerAdapter(FragmentManager fm) {
@@ -24,6 +32,7 @@ public class BasePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         ViewPagerFragment fragment = new ViewPagerFragment();
+        fragment.initData(position);
         return fragment;
     }
 

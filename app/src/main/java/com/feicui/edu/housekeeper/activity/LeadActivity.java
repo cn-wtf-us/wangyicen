@@ -28,11 +28,24 @@ public class LeadActivity extends BaseActivity {
         startActivity(MainActivity.class);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        icons[0] = (ImageView) findViewById(R.id.icon1);
+        icons[1] = (ImageView) findViewById(R.id.icon2);
+        icons[2] = (ImageView) findViewById(R.id.icon3);
 
         //创建适配器
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager());
+        //初始化viewpager要显示多少个页面
+        adapter.setCount(3);
         //绑定适配器
         viewPager.setAdapter(adapter);
+
+        //给ViewPager添加滑动监听
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+            }
+        });
 
         /*String fromClassName = intent.getStringExtra("className");
         if (fromClassName != null && fromClassName.equals("SettingActivity")){
