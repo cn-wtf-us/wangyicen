@@ -1,20 +1,68 @@
 package com.feicui.edu.housekeeper.base.adapter;
 
-import android.graphics.Color;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.os.Parcelable;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
 
-import com.feicui.edu.housekeeper.fragment.ViewPagerFragment;
 
-import java.util.Random;
+import java.util.List;
+
 
 /**
  * Created by asus on 2016/9/18.
  */
-public class BasePagerAdapter extends FragmentStatePagerAdapter {
+public class BasePagerAdapter extends PagerAdapter {
+    private List<View> views;
 
-    private int count;
+    public BasePagerAdapter(List<View> views){
+        this.views = views;
+    }
+
+    @Override
+    public void destroyItem(View container, int position, Object object) {
+        ((ViewPager) container).removeView(views.get(position));
+    }
+
+    @Override
+    public void finishUpdate(View container) {
+        super.finishUpdate(container);
+    }
+
+    @Override
+    public int getCount() {
+        if (views != null){
+            return views.size();
+        }
+        return 0;
+    }
+
+    @Override
+    public Object instantiateItem(View container, int position) {
+        ((ViewPager) container).addView(views.get(position), 0);
+        return views.get(position);
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    @Override
+    public void restoreState(Parcelable state, ClassLoader loader) {
+
+    }
+
+    @Override
+    public Parcelable saveState() {
+        return null;
+    }
+
+    @Override
+    public void startUpdate(View container) {
+
+    }
+    /*private int count;
     int[] colors;
     Random random = new Random();
     public void setCount(int count) {
@@ -40,7 +88,7 @@ public class BasePagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return count;
     }
-
+*/
 
 
     /*protected Context context;

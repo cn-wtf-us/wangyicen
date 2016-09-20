@@ -1,33 +1,55 @@
 package com.feicui.edu.housekeeper.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.adapter.BasePagerAdapter;
 
-public class LeadActivity extends BaseActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private ImageView[] icons = new ImageView[3];
-    private TextView tv_skip;
+public class LeadActivity extends BaseActivity implements ViewPager.OnPageChangeListener,View.OnClickListener {
     private ViewPager viewPager;
     private BasePagerAdapter leadPagerAdapter;
-    private boolean isFromSetting = false;//是否来自设置界面
-    private Intent intent = new Intent();
+    private List<View> views;
+
+    private static final int[] icons = {R.drawable.adware_style_applist,
+            R.drawable.adware_style_banner, R.drawable.adware_style_creditswall};
+    private ImageView[] dots ;
+    private int currentIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startActivity(MainActivity.class);
 
+        views = new ArrayList<View>();
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        for (int i = 0; i < icons.length; i++) {
+            ImageView iv = new ImageView(this);
+            iv.setLayoutParams(layoutParams);
+            iv.setImageResource(icons[i]);
+            views.add(iv);
+        }
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        leadPagerAdapter = new BasePagerAdapter(views);
+        viewPager.setAdapter(leadPagerAdapter);
+
+        viewPager.setOnPageChangeListener(this);
+        initDots();
+
+
+
+        /*viewPager = (ViewPager) findViewById(R.id.viewpager);
         icons[0] = (ImageView) findViewById(R.id.icon1);
         icons[1] = (ImageView) findViewById(R.id.icon2);
         icons[2] = (ImageView) findViewById(R.id.icon3);
@@ -44,8 +66,13 @@ public class LeadActivity extends BaseActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+
+                for (int i = 0; i < icons.length; i++) {
+                    icons[i].setBackgroundResource(R.drawable.adware_style_default);
+                }
+                icons[position].setBackgroundResource(R.drawable.adware_style_selected);
             }
-        });
+        });*/
 
         /*String fromClassName = intent.getStringExtra("className");
         if (fromClassName != null && fromClassName.equals("SettingActivity")){
@@ -71,6 +98,67 @@ public class LeadActivity extends BaseActivity {
         finish();*/
 
     }
+
+    private void initDots() {
+        LinearLayout linearlayout = (LinearLayout) findViewById(R.id.linear_layout);
+
+        dots = new ImageView[icons.length];
+
+        //循环取得小点图片
+        for (int i = 0; i < icons.length; i++) {
+            dots[i] = (ImageView) linearlayout.getChildAt(i);
+            dots[i].setEnabled(true);//都设为灰色
+            dots[i].setOnClickListener(this);
+            dots[i].setTag(i);//设置位置tag，方便取出与当前位置对应
+        }
+
+        currentIndex = 0;
+        dots[currentIndex].setEnabled(false);//设置为白色，即选中状态
+    }
+
+    private void setCurView(int position)
+    {
+        if (position < 0 || position >= icons.length) {
+            return;
+        }
+
+        viewPager.setCurrentItem(position);
+    }
+    private void setCurDot(int positon)
+    {
+        if (positon < 0 || positon > icons.length - 1 || currentIndex == positon) {
+            return;
+        }
+
+        dots[positon].setEnabled(false);
+        dots[currentIndex].setEnabled(true);
+
+        currentIndex = positon;
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        setCurDot(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = (Integer)view.getTag();
+        setCurView(position);
+        setCurDot(position);
+    }
+
+
 
     /*private void savePreferences(){
         SharedPreferences preferences = getSharedPreferences("Lead_config", Context.MODE_PRIVATE);
