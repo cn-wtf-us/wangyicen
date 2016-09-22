@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/leadBackground"
+
         />
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -38,18 +39,14 @@
             android:contentDescription="@string/lead_text_description3"
             />
     </LinearLayout>
-
-    <!-- 文本框 -->
     <TextView
-        android:id="@+id/tv_skip"
+        android:id="@+id/lead_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="@dimen/lead_skip_margin_right"
-        android:layout_marginTop="@dimen/lead_skip_margin_top"
+        android:visibility="gone"
+        android:textSize="25sp"
         android:text="@string/lead_skiptext"
-        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
         />
-
 </RelativeLayout>

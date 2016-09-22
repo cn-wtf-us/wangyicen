@@ -12,4 +12,14 @@
     <dimen name="lead_skip_margin_top">18dip</dimen>
     <dimen name="app_listitem_horizontal_margin">16dp</dimen>
 
+    <!-- home 界面 -->
+    <dimen name="home_item_textView">14sp</dimen>
+    <dimen name="home_item_textMarginTop">10dip</dimen>
+
+    <!-- action bar -->
+    <dimen name="actionbar_height">36dp</dimen>
+    <dimen name="actionbar_titleSize">16sp</dimen>
+    <dimen name="icon_width">42dp</dimen>
+
+
 </resources>

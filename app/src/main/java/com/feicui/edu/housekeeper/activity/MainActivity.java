@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             //动画结束
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(MainActivity.this, TelmsgActivity.class);
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
