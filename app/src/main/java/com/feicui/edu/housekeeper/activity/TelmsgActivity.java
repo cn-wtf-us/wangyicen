@@ -72,7 +72,5 @@ public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnI
         Intent intent = new Intent(this, TellistActivity.class);
         intent.putExtra("idx", classInfo.idx);
         startActivity(intent);
-
-
     }
 }

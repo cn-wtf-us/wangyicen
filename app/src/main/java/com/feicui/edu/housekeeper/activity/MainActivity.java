@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import com.feicui.edu.housekeeper.R;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +17,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.iv_logo);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.alpha);
         imageView.startAnimation(animation);
-
+        //设置动画
         Animation.AnimationListener animationListener = new Animation.AnimationListener() {
             //动画开始
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
             //动画结束
             @Override
@@ -35,10 +33,8 @@ public class MainActivity extends AppCompatActivity {
             //动画重复
             @Override
             public void onAnimationRepeat(Animation animation) {
-
             }
         };
-
         animation.setAnimationListener(animationListener);
         imageView.startAnimation(animation);
     }

@@ -17,7 +17,6 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TellistAdapter;
 import com.feicui.edu.housekeeper.db.DBReader;
 
-
 public class TellistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listView;
@@ -31,7 +30,6 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
 
         //获取数据用来判断是显示哪一种分类的电话号码
         idx = getIntent().getIntExtra("idx", 1);
-
         listView = (ListView) findViewById(R.id.list_item);
         listView.setOnItemClickListener(this);
         adapter = new TellistAdapter(this);
@@ -79,10 +77,8 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
                     return;
                 }
                 startActivity(intent);
-
             }
         });
         builder.show();
-
     }
 }
