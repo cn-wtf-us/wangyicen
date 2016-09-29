@@ -13,6 +13,7 @@ import com.feicui.edu.housekeeper.R;
  * Created by Administrator on 2016/9/21 0021.
  */
 public class ActionBarView extends LinearLayout {
+    public static final int ID_BAR = -1;
     private ImageView iv_actionbar_left;//左边图片
     private TextView tv_actionbar_title;//中间文字
     private ImageView iv_actionbar_right;//右边图片
@@ -32,15 +33,15 @@ public class ActionBarView extends LinearLayout {
      * @param rightResID    右边图像资源ID
      * @param listener      左右两边图标的监听
      */
-    public void initActionBar(String title, int leftResID, int rightResID,OnClickListener listener){
+    public void initActionBar(String title, int leftResID, int rightResID, OnClickListener listener){
         tv_actionbar_title.setText(title);
-        if (leftResID == -1) {
+        if (leftResID == ID_BAR) {
             iv_actionbar_left.setVisibility(View.INVISIBLE);
         } else {
             iv_actionbar_left.setImageResource(leftResID);
             iv_actionbar_left.setOnClickListener(listener);
         }
-        if (rightResID == -1) {
+        if (rightResID == ID_BAR) {
             iv_actionbar_right.setVisibility(View.INVISIBLE);
         } else {
             iv_actionbar_right.setImageResource(rightResID);
@@ -48,4 +49,6 @@ public class ActionBarView extends LinearLayout {
         }
 
     }
+
+
 }

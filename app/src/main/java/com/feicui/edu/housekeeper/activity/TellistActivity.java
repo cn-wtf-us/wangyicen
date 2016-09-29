@@ -17,6 +17,7 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TellistAdapter;
 import com.feicui.edu.housekeeper.db.DBReader;
 
+
 public class TellistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listView;

@@ -17,5 +17,5 @@
     <string name="telmgr">通讯大全</string>
     <string name="filemgr">文件管理</string>
     <string name="sdclean">垃圾清理</string>
-
+    <string name="tel_title">一站式号码服务平台</string>
 </resources>

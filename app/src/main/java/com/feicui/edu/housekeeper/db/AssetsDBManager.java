@@ -36,40 +36,13 @@ public class AssetsDBManager {
         } catch (IOException e) {
             throw e;
         }finally{
-            bis.close();
-            bos.close();
-        }
-
-
-        /*LogUtil.d("AssetDBManager", "copyAssetsFileToFile start");
-        LogUtil.d("AssetDBManager", "File path:" + path);
-        LogUtil.d("AssetDBManager", "toFile path:" + toFile.getAbsolutePath());
-
-        InputStream inputStream = null;
-        //输入流
-        BufferedInputStream bufferedInputStream = null;
-        //输出流
-        BufferedOutputStream bufferedOutputStream = null;
-
-        try {
-            inputStream = context.getAssets().open(path);
-            bufferedInputStream = new BufferedInputStream(inputStream);
-            bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(toFile, false));
-
-            int length = 0;
-            byte[] buff = new byte[2 * 1024];
-            while ((length = bufferedInputStream.read(buff)) != -1){
-                bufferedOutputStream.write(buff, 0, length);
+            if (bis != null){
+                bis.close();
             }
-            bufferedOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            bufferedOutputStream.close();
-            bufferedInputStream.close();
-            inputStream.close();
-            LogUtil.d("AssetDBManager", "copyAssetsFileToFile end");
-        }*/
+            if (bos != null){
+                bos.close();
+            }
+        }
 
     }
 }

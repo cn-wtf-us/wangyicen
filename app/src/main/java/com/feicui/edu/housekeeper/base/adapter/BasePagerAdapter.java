@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.fragment.ViewPagerFragment;
 
+
 public class BasePagerAdapter extends FragmentStatePagerAdapter {
     private int[] pics = {R.drawable.adware_style_applist,
             R.drawable.adware_style_banner, R.drawable.adware_style_creditswall};

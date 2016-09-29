@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.feicui.edu.housekeeper.R;
 
+
 public class ViewPagerFragment extends Fragment {
 
     private int resId;

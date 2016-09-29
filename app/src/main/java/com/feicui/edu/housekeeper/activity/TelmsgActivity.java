@@ -8,12 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TelclassAdapter;
 import com.feicui.edu.housekeeper.db.AssetsDBManager;
 import com.feicui.edu.housekeeper.db.DBReader;
 import com.feicui.edu.housekeeper.entity.TelclassInfo;
-import com.feicui.edu.housekeeper.base.utils.ToastUtil;
 
 import java.io.IOException;
 
@@ -35,9 +35,9 @@ public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnI
         //检测是否存在DB文件
         if (!DBReader.isExistsTeldbFile()) {
             try {
-                AssetsDBManager.copyAssetsFileToFile(getApplicationContext(), "db/commonnum.db",DBReader.file.toString());
+                AssetsDBManager.copyAssetsFileToFile(getApplicationContext(), "db/commonnum.db", DBReader.file.toString());
             } catch (IOException e) {
-                ToastUtil.show(this, "数据库文件异常...", Toast.LENGTH_SHORT);
+                //ToastUtil.show(this, "数据库文件异常...", Toast.LENGTH_SHORT);
             }
         }
     }

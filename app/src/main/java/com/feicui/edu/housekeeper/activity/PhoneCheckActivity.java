@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.feicui.edu.housekeeper.R;
 
+
 public class PhoneCheckActivity extends AppCompatActivity {
 
     @Override

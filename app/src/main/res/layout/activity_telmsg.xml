@@ -9,7 +9,7 @@
         android:id="@+id/tv_tel"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="一站式号码服务平台"
+        android:text="@string/tel_title"
         android:gravity="center"
         android:textSize="30dp"
         android:background="#6495ED"
