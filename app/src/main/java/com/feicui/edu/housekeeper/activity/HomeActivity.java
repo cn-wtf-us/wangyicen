@@ -18,10 +18,10 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()){
-                    case R.id.iv_left:
+                    case R.id.iv_left://跳转关于界面
                         HomeActivity.this.startActivity(AboutActivity.class);
                         break;
-                    case R.id.iv_right:
+                    case R.id.iv_right://跳转设置界面
                         HomeActivity.this.startActivity(SettingActivity.class);
                 }
             }

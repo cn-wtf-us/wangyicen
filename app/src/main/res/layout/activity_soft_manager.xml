@@ -1,18 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.feicui.edu.housekeeper.activity.SoftManagerActivity">
-    <TextView
+    <com.feicui.edu.housekeeper.view.ActionBarView
+        android:id="@+id/view_action_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+    </com.feicui.edu.housekeeper.view.ActionBarView>
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="软件管理界面"
-        android:textColor="@color/colorAccent"
-        />
-</RelativeLayout>
+        android:padding="20dp"
+        >
+        <View
+            android:id="@+id/soft_mgr_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:background="#d69871"/>
+        <LinearLayout
+            android:id="@+id/soft_mgr_linear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/soft_mgr_view"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/soft_mgr_iv1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="5dp"
+                android:background="#08f"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="手机内存空间"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/soft_mgr_linear2"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/soft_mgr_view"
+            android:layout_below="@id/soft_mgr_linear1">
+            <ImageView
+                android:id="@+id/soft_mgr_iv2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="5dp"
+                android:background="#073"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="手机内存空间"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/soft_mgr_linear3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/soft_mgr_view"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机内存空间："
+                />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:id="@+id/progressBar" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
