@@ -31,7 +31,8 @@
         <activity android:name=".activity.PhoneCheckActivity" />
         <activity android:name=".activity.FileManagerActivity" />
         <activity android:name=".activity.SDCleanActivity" />
-        <activity android:name=".activity.AboutActivity"></activity>
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.SoftMgrListActivity"></activity>
     </application>
 
 </manifest>

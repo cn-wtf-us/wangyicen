@@ -31,21 +31,20 @@ public class ActionBarView extends LinearLayout {
      * @param title         中间标题文字
      * @param leftResID     左边图像资源ID
      * @param rightResID    右边图像资源ID
-     * @param listener      左右两边图标的监听
      */
-    public void initActionBar(String title, int leftResID, int rightResID, OnClickListener listener){
+    public void initActionBar(String title, int leftResID, int rightResID, OnClickListener on){
         tv_actionbar_title.setText(title);
         if (leftResID == ID_BAR) {
             iv_actionbar_left.setVisibility(View.INVISIBLE);
         } else {
             iv_actionbar_left.setImageResource(leftResID);
-            iv_actionbar_left.setOnClickListener(listener);
+            iv_actionbar_left.setOnClickListener(on);
         }
         if (rightResID == ID_BAR) {
             iv_actionbar_right.setVisibility(View.INVISIBLE);
         } else {
             iv_actionbar_right.setImageResource(rightResID);
-            iv_actionbar_right.setOnClickListener(listener);
+            iv_actionbar_right.setOnClickListener(on);
         }
 
     }

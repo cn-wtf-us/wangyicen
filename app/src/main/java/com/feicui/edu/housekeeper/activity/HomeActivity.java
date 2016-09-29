@@ -14,21 +14,22 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right , on);
-    }
-    View.OnClickListener on = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.drawable.home_left:
-                    startActivity(AboutActivity.class);
-                    break;
-                case R.drawable.home_right:
-                    startActivity(SettingActivity.class);
-                    break;
+        View.OnClickListener on = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (view.getId()){
+                    case R.id.iv_left:
+                        HomeActivity.this.startActivity(AboutActivity.class);
+                        break;
+                    case R.id.iv_right:
+                        HomeActivity.this.startActivity(SettingActivity.class);
+                }
             }
-        }
-    };
+        };
+        bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right, on);
+
+    }
+
     public void hitHomeItem(View view){
         int viewID = view.getId();
         switch (viewID){

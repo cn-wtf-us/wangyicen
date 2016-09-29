@@ -9,6 +9,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:clickable="true"
         android:background="@drawable/home_entry_item"
         android:src="@drawable/home_left"
         />
@@ -29,6 +30,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:clickable="true"
         android:background="@drawable/home_entry_item"
         android:src="@drawable/home_right"
         />

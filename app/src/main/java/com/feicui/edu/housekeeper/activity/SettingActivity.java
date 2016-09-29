@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 import android.widget.ToggleButton;
@@ -22,20 +23,24 @@ public class SettingActivity extends BaseActivity {
     private ActionBarView bar;
     private ToggleButton notification;
     private RelativeLayout help,about;
-    private static final int NOTIFICATION_ID = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        View.OnClickListener on = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingActivity.this.finish();
+            }
+        };
+        notification = (ToggleButton) findViewById(R.id.setting_notification);
         boolean toggleState = SharedPreferenceUtil.getToggleState(this);
         notification.setChecked(toggleState);
-
-        notification = (ToggleButton) findViewById(R.id.setting_notification);
         help = (RelativeLayout) findViewById(R.id.setting_help);
         about = (RelativeLayout) findViewById(R.id.setting_about);
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
         bar.initActionBar("设 置", R.drawable.home_left, ActionBarView.ID_BAR, on);
+
         notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -49,19 +54,26 @@ public class SettingActivity extends BaseActivity {
                 }
             }
         });
+
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(AboutActivity.class);
+                startActivity(LeadActivity.class);
+            }
+        });
+        //帮助说明
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //跳转到引导界面
+                Intent intent = new Intent(SettingActivity.this, LeadActivity.class);
+                intent.putExtra("param", SettingActivity.class.getSimpleName());
+                SettingActivity.this.startActivity(intent);
+
             }
         });
     }
-    View.OnClickListener on = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            SettingActivity.this.finish();
-        }
-    };
+
     //退出设置界面时，同样关闭通知
     @Override
     protected void onDestroy() {
