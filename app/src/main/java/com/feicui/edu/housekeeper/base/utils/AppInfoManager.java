@@ -35,16 +35,13 @@ public class AppInfoManager {
     public ArrayList<AppInfo> getAllInstalledApp(){
         //获取所有已经安装在手机上的应用
         List<PackageInfo> packageInfos = packageManager.getInstalledPackages(0);
-
         //每次调用此函数前需要清空集合
         appInfos.clear();
-
         for(PackageInfo info :packageInfos){
             appInfos.add(new AppInfo(info));
         }
         return appInfos;
     }
-
     /* 获取系统应用信息*/
     public ArrayList<AppInfo> getSysInstalledApp(){
         ArrayList<AppInfo> sysInfos = new ArrayList<AppInfo>();
@@ -66,7 +63,7 @@ public class AppInfoManager {
         //判断到底哪些是系统的
         for(AppInfo appInfo:appInfos){
             PackageInfo packageInfo = appInfo.getInfo();
-            if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){//系统应用
+            if((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){//用户应用
                 userInfos.add(new AppInfo(packageInfo));
             }
         }
