@@ -1,9 +1,7 @@
 package com.feicui.edu.housekeeper.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -11,9 +9,6 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
 import com.feicui.edu.housekeeper.view.ActionBarView;
-
-import java.text.Format;
-import java.util.Formatter;
 
 
 public class SoftManagerActivity extends BaseActivity {
@@ -44,10 +39,8 @@ public class SoftManagerActivity extends BaseActivity {
         SDCardTv.setText(sdav + "/" + sdTotal);
 
         //计算百分比
-        pb1.setProgress((int)Math.round((MemoryUtil.getPhoneSelfTotalRom() - MemoryUtil.getPhoneSelfAvRom()) /
-                (double)MemoryUtil.getPhoneSelfTotalRom()) * 100);
-        pb2.setProgress((int)Math.round((MemoryUtil.getPhoneSDRom() - MemoryUtil.getPhoneSDAvRom()) /
-                (double)MemoryUtil.getPhoneSDRom()) * 100);
+        pb1.setProgress((int)Math.round((MemoryUtil.getPhoneSelfTotalRom() - MemoryUtil.getPhoneSelfAvRom()) / (double)MemoryUtil.getPhoneSelfTotalRom()) * 100);
+        pb2.setProgress((int)Math.round((MemoryUtil.getPhoneSDRom() - MemoryUtil.getPhoneSDAvRom()) / (double)MemoryUtil.getPhoneSDRom()) * 100);
 
     }
 

@@ -58,7 +58,7 @@ public class SettingActivity extends BaseActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(LeadActivity.class);
+                startActivity(AboutActivity.class);
             }
         });
         //帮助说明
@@ -66,7 +66,7 @@ public class SettingActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 //跳转到引导界面
-                Intent intent = new Intent(SettingActivity.this, LeadActivity.class);
+                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
                 intent.putExtra("param", SettingActivity.class.getSimpleName());
                 SettingActivity.this.startActivity(intent);
 
