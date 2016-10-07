@@ -1,8 +1,12 @@
 package com.feicui.edu.housekeeper.activity;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.SoftMgrListAdapter;
@@ -12,11 +16,26 @@ import com.feicui.edu.housekeeper.view.ActionBarView;
 
 import java.util.ArrayList;
 
+
 public class SoftMgrListActivity extends AppCompatActivity {
     private ActionBarView bar;
     private ArrayList<AppInfo> appInfos;
     private ListView lv;
     private SoftMgrListAdapter adapter;
+    private ProgressBar progressBar;
+    //创建一个Handler的子类对象
+    private Handler handler = new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            progressBar.setVisibility(View.GONE);
+            lv.setVisibility(View.VISIBLE);
+            //接收和处理消息
+            adapter = new SoftMgrListAdapter(SoftMgrListActivity.this, appInfos);
+            lv.setAdapter(adapter);
+        }
+    };//接收和处理消息
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +60,17 @@ public class SoftMgrListActivity extends AppCompatActivity {
                         appInfos = appManager.getAllInstalledApp();
                         break;
                 }
-            }
+                //发送消息到Handler
+                handler.sendEmptyMessage(0);
+            };
         }.start();
 
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
         bar.initActionBar("所有软件",R.drawable.home_left, ActionBarView.ID_BAR, null);
 
         lv = (ListView) findViewById(R.id.soft_mgr_list_lv);
-        adapter = new SoftMgrListAdapter(this, appInfos);
-        lv.setAdapter(adapter);
+        progressBar = (ProgressBar) findViewById(R.id.soft_mgr_list_pb);
+
 
     }
 }

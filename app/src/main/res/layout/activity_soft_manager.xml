@@ -147,6 +147,7 @@
                     android:id="@+id/soft_mgr_all"
                     style="@style/setting_relative_layout"
                     android:clickable="true"
+                    android:background="@drawable/home_entry_item"
                     android:onClick="navigationToList">
 
                     <TextView
@@ -161,6 +162,7 @@
                     android:id="@+id/soft_mgr_system"
                     style="@style/setting_relative_layout"
                     android:clickable="true"
+                    android:background="@drawable/home_entry_item"
                     android:onClick="navigationToList">
 
                     <TextView
@@ -175,6 +177,7 @@
                     android:id="@+id/soft_mgr_user"
                     style="@style/setting_relative_layout"
                     android:clickable="true"
+                    android:background="@drawable/home_entry_item"
                     android:onClick="navigationToList">
 
                     <TextView
