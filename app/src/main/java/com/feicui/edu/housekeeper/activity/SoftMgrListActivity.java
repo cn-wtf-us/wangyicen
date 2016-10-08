@@ -43,7 +43,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soft_mgr_list);
-
+        bar = (ActionBarView) findViewById(R.id.view_action_bar);
         final AppInfoManager appManager = AppInfoManager.getInstance(this);
         final int key = getIntent().getIntExtra("soft", 1);
         //接受传递过来的参数
@@ -54,6 +54,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
                 switch (key){
                     case SoftManagerActivity.ALL:
                         appInfos = appManager.getAllInstalledApp();
+
                         break;
                     case SoftManagerActivity.SYS:
                         appInfos = appManager.getSysInstalledApp();
@@ -66,10 +67,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
                 handler.sendEmptyMessage(0);
             };
         }.start();
-
-        bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("所有软件",ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
-
+        bar.initActionBar("软件列表",ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
         lv = (ListView) findViewById(R.id.soft_mgr_list_lv);
         progressBar = (ProgressBar) findViewById(R.id.soft_mgr_list_pb);
 
@@ -78,16 +76,16 @@ public class SoftMgrListActivity extends AppCompatActivity {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int scrollState) {
                 switch (scrollState){
-                    case SCROLL_STATE_IDLE://空闲
+                    case SCROLL_STATE_IDLE://空闲 SCROLL_STATE_IDLE = 0
                         //给适配器设置状态
                         adapter.setFlying(false);
                         //需要加载图片更新界面
                         adapter.notifyDataSetChanged();
                         break;
-                    case SCROLL_STATE_TOUCH_SCROLL://缓慢滑动
+                    case SCROLL_STATE_TOUCH_SCROLL://缓慢滑动  SCROLL_STATE_TOUCH_SCROLL = 1
                         adapter.setFlying(true);
                         break;
-                    case SCROLL_STATE_FLING://快速滑动
+                    case SCROLL_STATE_FLING://快速滑动  SCROLL_STATE_FLING = 2
                         adapter.setFlying(true);
                         break;
                 }
