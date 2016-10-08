@@ -5,6 +5,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -23,6 +24,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
     private ListView lv;
     private SoftMgrListAdapter adapter;
     private ProgressBar progressBar;
+
     //创建一个Handler的子类对象
     private Handler handler = new Handler(){
 
@@ -54,10 +56,10 @@ public class SoftMgrListActivity extends AppCompatActivity {
                         appInfos = appManager.getAllInstalledApp();
                         break;
                     case SoftManagerActivity.SYS:
-                        appInfos = appManager.getAllInstalledApp();
+                        appInfos = appManager.getSysInstalledApp();
                         break;
                     case SoftManagerActivity.USER:
-                        appInfos = appManager.getAllInstalledApp();
+                        appInfos = appManager.getUserInstalledApp();
                         break;
                 }
                 //发送消息到Handler
@@ -66,11 +68,34 @@ public class SoftMgrListActivity extends AppCompatActivity {
         }.start();
 
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("所有软件",R.drawable.home_left, ActionBarView.ID_BAR, null);
+        bar.initActionBar("所有软件",ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
 
         lv = (ListView) findViewById(R.id.soft_mgr_list_lv);
         progressBar = (ProgressBar) findViewById(R.id.soft_mgr_list_pb);
 
-
+        lv.setOnScrollListener(new AbsListView.OnScrollListener() {
+            //当滚动状态更改时调用
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+                switch (scrollState){
+                    case SCROLL_STATE_IDLE://空闲
+                        //给适配器设置状态
+                        adapter.setFlying(false);
+                        //需要加载图片更新界面
+                        adapter.notifyDataSetChanged();
+                        break;
+                    case SCROLL_STATE_TOUCH_SCROLL://缓慢滑动
+                        adapter.setFlying(true);
+                        break;
+                    case SCROLL_STATE_FLING://快速滑动
+                        adapter.setFlying(true);
+                        break;
+                }
+            }
+            //当手指滚动时调用
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+            }
+        });
     }
 }

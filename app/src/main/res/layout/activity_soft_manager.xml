@@ -16,7 +16,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <View
             android:id="@+id/soft_mgr_view"
@@ -92,7 +92,7 @@
                 android:layout_height="20dp"
                 android:max="100"
                 android:progress="30"
-                android:progressDrawable="@drawable/softmgr_progressbar1" />
+                android:indeterminateDrawable="@drawable/softmgr_progressbar1" />
 
             <TextView
                 android:id="@+id/soft_mgr_phone_memory"
@@ -123,7 +123,7 @@
                 android:layout_height="20dp"
                 android:max="100"
                 android:progress="30"
-                android:progressDrawable="@drawable/softmgr_progressbar2" />
+                android:indeterminateDrawable="@drawable/softmgr_progressbar2" />
 
             <TextView
                 android:id="@+id/soft_mgr_sdcard_memory"
@@ -141,7 +141,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
 
                 <RelativeLayout
                     android:id="@+id/soft_mgr_all"
