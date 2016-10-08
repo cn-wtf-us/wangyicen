@@ -17,7 +17,6 @@ import com.feicui.edu.housekeeper.view.ActionBarView;
 
 import java.util.ArrayList;
 
-
 public class SoftMgrListActivity extends AppCompatActivity {
     private ActionBarView bar;
     private ArrayList<AppInfo> appInfos;
@@ -27,7 +26,6 @@ public class SoftMgrListActivity extends AppCompatActivity {
 
     //创建一个Handler的子类对象
     private Handler handler = new Handler(){
-
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -54,7 +52,6 @@ public class SoftMgrListActivity extends AppCompatActivity {
                 switch (key){
                     case SoftManagerActivity.ALL:
                         appInfos = appManager.getAllInstalledApp();
-
                         break;
                     case SoftManagerActivity.SYS:
                         appInfos = appManager.getSysInstalledApp();

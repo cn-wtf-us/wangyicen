@@ -30,11 +30,7 @@ public class BitmapCache {
     //添加图片到集合
     public void addBitmap(int key, Bitmap bitmap){
         //判断要添加的图片在集合中是否存在，如果存在则不添加
-        /*if (datas.containsKey(key)){
-            return;
-        }*/
         datas.put(key, new MySoft(bitmap, queue, key));
-
     }
     //获取数据
     public Bitmap getBitmap(int key, Context context){
@@ -58,6 +54,8 @@ public class BitmapCache {
         datas = new Hashtable<Integer, MySoft>();
         queue = new ReferenceQueue<Bitmap>();
     }
+
+    //单例模式
     public static BitmapCache getInstance(){
         if (bitmapCache == null){
             bitmapCache = new BitmapCache();
