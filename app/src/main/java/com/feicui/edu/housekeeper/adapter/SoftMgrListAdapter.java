@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,20 +23,30 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016/9/30 0030.
  */
-public class SoftMgrListAdapter extends BaseAdapter {
+public class SoftMgrListAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener {
     private ArrayList<AppInfo> appInfos;
     private Context context;
     private LayoutInflater inflater;
     private BitmapCache cache;
     private boolean isFlying;
 
+    //传递数据
+    public void addData(ArrayList<AppInfo> appInfos){
+        this.appInfos.clear();
+        this.appInfos.addAll(appInfos);
+    }
+
+    public ArrayList<AppInfo> getAppInfos(){
+        return appInfos;
+    }
+
     public void setFlying(boolean isFlying){
         this.isFlying = isFlying;
     }
 
-    public SoftMgrListAdapter(Context context, ArrayList<AppInfo> appInfos){
-        this.appInfos = appInfos;
+    public SoftMgrListAdapter(Context context){
         this.context = context;
+        appInfos = new ArrayList<AppInfo>();
         //创建布局加载器
         inflater = LayoutInflater.from(context);
         cache = BitmapCache.getInstance();
@@ -54,6 +65,14 @@ public class SoftMgrListAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        //当被点击了就设置属性为true
+        int position = (int) buttonView.getTag();
+        AppInfo appInfo = appInfos.get(position);
+        appInfo.setChecked(isChecked);
     }
 
     class ViewHolder{
@@ -86,18 +105,26 @@ public class SoftMgrListAdapter extends BaseAdapter {
         //添加数据
         AppInfo appInfo = appInfos.get(position);
         PackageInfo packageInfo = appInfo.getInfo();
-        vh.checkBox.setChecked(false);
-        //获取图标
-        Drawable drawable = packageInfo.applicationInfo.loadIcon(context.getPackageManager());
-        //将Drawable类型转换成Bitmap
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        //将Bitmap添加到软引用中防止OOM异常
-        cache.addBitmap(position, bitmap);
+        //给所有多选框设置监听
+        vh.checkBox.setOnCheckedChangeListener(this);
+        vh.checkBox.setTag(position);
+        //设置多选框的当前状态
+        vh.checkBox.setChecked(appInfo.isChecked());
+        if (!isFlying){
+            //获取图标
+            Drawable drawable = packageInfo.applicationInfo.loadIcon(context.getPackageManager());
+            //将Drawable类型转换成Bitmap
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            //将Bitmap添加到软引用中防止OOM异常
+            cache.addBitmap(position, bitmap);
+            //从软引用集合中尝试获取图标，但是不一定获取到
+            vh.imageView.setImageBitmap(cache.getBitmap(position, context));
+        }else {
+            vh.imageView.setImageResource(R.mipmap.ic_launcher);
+        }
 
         String label = packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString();
-        //从软引用集合中尝试获取图标，但是不一定获取到
-        vh.imageView.setImageBitmap(cache.getBitmap(position, context));
         vh.textView1.setText(label);
         vh.textView2.setText(packageInfo.packageName);
         vh.textView3.setText(packageInfo.versionName);

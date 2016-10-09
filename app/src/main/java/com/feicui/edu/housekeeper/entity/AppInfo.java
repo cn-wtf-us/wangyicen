@@ -8,6 +8,8 @@ import android.content.pm.PackageInfo;
 public class AppInfo {
 
     private PackageInfo info;
+    //控制checkbox状态
+    private boolean isChecked;
 
     public AppInfo(PackageInfo info){
         super();
@@ -18,5 +20,13 @@ public class AppInfo {
     }
     public void setInfo(PackageInfo info){
         this.info = info;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }
