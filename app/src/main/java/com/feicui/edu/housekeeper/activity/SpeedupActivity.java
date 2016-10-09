@@ -5,21 +5,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.feicui.edu.housekeeper.R;
+import com.feicui.edu.housekeeper.adapter.RocketListAdapter;
+import com.feicui.edu.housekeeper.entity.RunningApp;
 import com.feicui.edu.housekeeper.view.ActionBarView;
+
+import java.util.ArrayList;
 
 
 public class SpeedupActivity extends AppCompatActivity {
 
     private ListView lv;
     private TextView tv1,tv2,tv3;
-    private CheckBox cb;
+    private CheckBox all;
     private ProgressBar pb;
     private ActionBarView bar;
+    private RocketListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +33,23 @@ public class SpeedupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_speedup);
 
         initView();
+        
+        setListener();
 
+    }
+
+    private void setListener() {
+        all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                ArrayList<RunningApp> runningApps = adapter.getDatas();
+                for (RunningApp runningApp: runningApps) {
+                    runningApp.setChecked(isChecked);
+                }
+                //更新适配器
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void initView() {
@@ -36,8 +58,9 @@ public class SpeedupActivity extends AppCompatActivity {
         tv1 = (TextView) findViewById(R.id.rocket_phone_name);
         tv2 = (TextView) findViewById(R.id.rocket_phone_label);
         tv3 = (TextView) findViewById(R.id.rocket_phone_total);
-        cb = (CheckBox) findViewById(R.id.rocket_all);
+        all = (CheckBox) findViewById(R.id.rocket_all);
         pb = (ProgressBar) findViewById(R.id.rocket_progressbar);
+        adapter = new RocketListAdapter(this);
     }
 
     //一键清理
