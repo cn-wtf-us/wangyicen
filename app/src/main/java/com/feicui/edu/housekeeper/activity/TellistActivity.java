@@ -15,10 +15,11 @@ import android.widget.ListView;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TellistAdapter;
+import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.db.DBReader;
 
 
-public class TellistActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class TellistActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private ListView listView;
     private TellistAdapter adapter;
@@ -26,15 +27,24 @@ public class TellistActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tel_list);
+        super.onCreate(savedInstanceState);
+        listView.setOnItemClickListener(this);
+        listView.setAdapter(adapter);
 
+    }
+
+    @Override
+    protected void initView() {
         //获取数据用来判断是显示哪一种分类的电话号码
         idx = getIntent().getIntExtra("idx", 1);
         listView = (ListView) findViewById(R.id.list_item);
-        listView.setOnItemClickListener(this);
         adapter = new TellistAdapter(this);
-        listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void setListener() {
+
     }
 
     @Override

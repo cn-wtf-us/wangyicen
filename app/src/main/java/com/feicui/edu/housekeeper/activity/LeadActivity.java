@@ -30,16 +30,8 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lead);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        //圆点
-        icons[0] = (ImageView) findViewById(R.id.icon1);
-        icons[1] = (ImageView) findViewById(R.id.icon2);
-        icons[2] = (ImageView) findViewById(R.id.icon3);
-        //直接跳过
-        textView = (TextView) findViewById(R.id.lead_skip);
-
+        super.onCreate(savedInstanceState);
         Bundle bundle = getIntent().getBundleExtra("bundle");
         if(bundle != null){
             //如果没有获取到数据则返回null
@@ -68,20 +60,35 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
             }
         }
 
+    }
+
+    @Override
+    protected void initView() {
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        //圆点
+        icons[0] = (ImageView) findViewById(R.id.icon1);
+        icons[1] = (ImageView) findViewById(R.id.icon2);
+        icons[2] = (ImageView) findViewById(R.id.icon3);
+        //直接跳过
+        textView = (TextView) findViewById(R.id.lead_skip);
+    }
+
+    @Override
+    protected void setListener() {
         textView.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            //试着接受传递过来的字符串，如果有，说明是从设置界面跳转过来的
-            if (!TextUtils.isEmpty(getIntent().getStringExtra("param"))){
-                //返回设置界面
-                LeadActivity.this.finish();
-                return;
+            @Override
+            public void onClick(View view) {
+                //试着接受传递过来的字符串，如果有，说明是从设置界面跳转过来的
+                if (!TextUtils.isEmpty(getIntent().getStringExtra("param"))){
+                    //返回设置界面
+                    LeadActivity.this.finish();
+                    return;
+                }
+                //否则就跳转到主界面
+                startActivity(MainActivity.class);
+                finish();
             }
-            //否则就跳转到主界面
-            startActivity(MainActivity.class);
-            finish();
-        }
-    });
+        });
         //创建适配器
         BasePagerAdapter adapter = new BasePagerAdapter(getSupportFragmentManager());
         //初始化viewpager要显示多少个页面
@@ -108,7 +115,6 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
 
             }
         });
-
     }
 
     @Override

@@ -11,9 +11,8 @@ public class HomeActivity extends BaseActivity {
     private ActionBarView bar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        bar = (ActionBarView) findViewById(R.id.view_action_bar);
+        super.onCreate(savedInstanceState);
         View.OnClickListener on = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,6 +26,16 @@ public class HomeActivity extends BaseActivity {
             }
         };
         bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right, on);
+
+    }
+
+    @Override
+    protected void initView() {
+        bar = (ActionBarView) findViewById(R.id.view_action_bar);
+    }
+
+    @Override
+    protected void setListener() {
 
     }
 

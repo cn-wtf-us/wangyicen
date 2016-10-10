@@ -11,25 +11,35 @@ import android.widget.Toast;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TelclassAdapter;
+import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.db.AssetsDBManager;
 import com.feicui.edu.housekeeper.db.DBReader;
 import com.feicui.edu.housekeeper.entity.TelclassInfo;
 
 import java.io.IOException;
 
-public class TelmsgActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class TelmsgActivity extends BaseActivity implements AdapterView.OnItemClickListener {
     private ListView listView;
     private TelclassAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_telmsg);
-
-        listView = (ListView) findViewById(R.id.lv_tel);
-        adapter = new TelclassAdapter(this);
+        super.onCreate(savedInstanceState);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
     }
+
+    @Override
+    protected void initView() {
+        listView = (ListView) findViewById(R.id.lv_tel);
+        adapter = new TelclassAdapter(this);
+    }
+
+    @Override
+    protected void setListener() {
+
+    }
+
     //初始化数据库文件
     private void initAppDBFile(){
         //检测是否存在DB文件

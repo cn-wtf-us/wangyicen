@@ -19,13 +19,14 @@ import android.widget.ProgressBar;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.SoftMgrListAdapter;
-import com.feicui.edu.housekeeper.base.utils.AppInfoManager;
+import com.feicui.edu.housekeeper.base.activity.BaseActivity;
+import com.feicui.edu.housekeeper.biz.AppInfoManager;
 import com.feicui.edu.housekeeper.entity.AppInfo;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
 import java.util.ArrayList;
 
-public class SoftMgrListActivity extends AppCompatActivity {
+public class SoftMgrListActivity extends BaseActivity {
     private ActionBarView bar;
     private ArrayList<AppInfo> appInfos;
     private ListView lv;
@@ -44,7 +45,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             lv.setVisibility(View.VISIBLE);
             //接收和处理消息
-            adapter.addData(appInfos);
+            adapter.addDatas(appInfos);
             adapter.notifyDataSetChanged();
         }
     };//接收和处理消息
@@ -52,7 +53,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
     //删除所有应用程序
     public void delApp(View view){
         //先确定要删除的应用软件
-        ArrayList<AppInfo> appInfos = adapter.getAppInfos();
+        ArrayList<AppInfo> appInfos = adapter.getDatas();
         for (AppInfo appInfo : appInfos) {
             //判断软件是否为选中状态
             if (appInfo.isChecked()){
@@ -65,20 +66,17 @@ public class SoftMgrListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soft_mgr_list);
-        initView();
+        super.onCreate(savedInstanceState);
+        lv.setAdapter(adapter);
         getData();
-
-
-        setListener();
     }
 
-    public void setListener() {
+    protected void setListener() {
         allSel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                ArrayList<AppInfo> appInfos = adapter.getAppInfos();
+                ArrayList<AppInfo> appInfos = adapter.getDatas();
                 for (AppInfo appInfo : appInfos) {
                     appInfo.setChecked(isChecked);
                 }
@@ -113,7 +111,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
         });
     }
 
-    public void initView() {
+    protected void initView() {
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
         appManager = AppInfoManager.getInstance(this);
         key = getIntent().getIntExtra("soft", 1);
@@ -130,7 +128,7 @@ public class SoftMgrListActivity extends AppCompatActivity {
         filter.addDataScheme("package");
         //打开广播
         registerReceiver(myAppDeletedReceiver, filter);
-        lv.setAdapter(adapter);
+
     }
 
     public void getData() {

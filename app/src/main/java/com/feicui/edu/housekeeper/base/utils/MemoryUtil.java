@@ -1,7 +1,14 @@
 package com.feicui.edu.housekeeper.base.utils;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Created by asus on 2016/9/29.
@@ -54,4 +61,36 @@ public class MemoryUtil {
 
         return size * count;
     }
+
+    //获取手机最大的运存Ram
+    public static long getPhoneTotalRamMemory(){
+        BufferedReader bufferedReader = null;
+        try {
+            FileReader fileReader = new FileReader("proc/meminfo");
+            bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+            String[] datas = line.split("//s+");
+            return Integer.parseInt(datas[1]) * 1024;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if (bufferedReader != null){
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return 0;
+    }
+
+    //获取空闲的运存
+    public static long getPhoneAvRamMemory(Context context){
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo.availMem;
+    }
+
 }

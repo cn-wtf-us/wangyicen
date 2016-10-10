@@ -23,16 +23,8 @@ public class SoftManagerActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soft_manager);
-        bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("软件管理", ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
-        phoneTv = (TextView) findViewById(R.id.soft_mgr_phone_memory);
-        SDCardTv = (TextView) findViewById(R.id.soft_mgr_sdcard_memory);
-        pb1 = (ProgressBar) findViewById(R.id.progressBar1);
-        pb2 = (ProgressBar) findViewById(R.id.progressBar2);
-
-
+        super.onCreate(savedInstanceState);
         String phoneTotal = android.text.format.Formatter.formatFileSize
                 (this, MemoryUtil.getPhoneSelfTotalRom());
         String phone = android.text.format.Formatter.formatFileSize
@@ -51,6 +43,21 @@ public class SoftManagerActivity extends BaseActivity {
                 MemoryUtil.getPhoneSelfAvRom()) / (double)MemoryUtil.getPhoneSelfTotalRom()) * 100);
         pb2.setProgress((int)Math.round((MemoryUtil.getPhoneSDRom() -
                 MemoryUtil.getPhoneSDAvRom()) / (double)MemoryUtil.getPhoneSDRom()) * 100);
+
+    }
+
+    @Override
+    protected void initView() {
+        bar = (ActionBarView) findViewById(R.id.view_action_bar);
+        bar.initActionBar("软件管理", ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
+        phoneTv = (TextView) findViewById(R.id.soft_mgr_phone_memory);
+        SDCardTv = (TextView) findViewById(R.id.soft_mgr_sdcard_memory);
+        pb1 = (ProgressBar) findViewById(R.id.progressBar1);
+        pb2 = (ProgressBar) findViewById(R.id.progressBar2);
+    }
+
+    @Override
+    protected void setListener() {
 
     }
 

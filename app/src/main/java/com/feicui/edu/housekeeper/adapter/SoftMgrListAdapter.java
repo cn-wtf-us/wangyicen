@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feicui.edu.housekeeper.R;
+import com.feicui.edu.housekeeper.base.adapter.MyBaseAdapter;
 import com.feicui.edu.housekeeper.base.utils.BitmapCache;
 import com.feicui.edu.housekeeper.entity.AppInfo;
 
@@ -23,55 +24,24 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016/9/30 0030.
  */
-public class SoftMgrListAdapter extends BaseAdapter implements CompoundButton.OnCheckedChangeListener {
-    private ArrayList<AppInfo> appInfos;
-    private Context context;
-    private LayoutInflater inflater;
+public class SoftMgrListAdapter extends MyBaseAdapter<AppInfo> implements CompoundButton.OnCheckedChangeListener {
     private BitmapCache cache;
     private boolean isFlying;
 
-    //传递数据
-    public void addData(ArrayList<AppInfo> appInfos){
-        this.appInfos.clear();
-        this.appInfos.addAll(appInfos);
-    }
-
-    public ArrayList<AppInfo> getAppInfos(){
-        return appInfos;
+    public SoftMgrListAdapter(Context context) {
+        super(context);
+        cache = BitmapCache.getInstance();
     }
 
     public void setFlying(boolean isFlying){
         this.isFlying = isFlying;
     }
 
-    public SoftMgrListAdapter(Context context){
-        this.context = context;
-        appInfos = new ArrayList<AppInfo>();
-        //创建布局加载器
-        inflater = LayoutInflater.from(context);
-        cache = BitmapCache.getInstance();
-    }
-
-    @Override
-    public int getCount() {
-        return appInfos.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return appInfos.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         //当被点击了就设置属性为true
         int position = (int) buttonView.getTag();
-        AppInfo appInfo = appInfos.get(position);
+        AppInfo appInfo = infos.get(position);
         appInfo.setChecked(isChecked);
     }
 
@@ -84,12 +54,12 @@ public class SoftMgrListAdapter extends BaseAdapter implements CompoundButton.On
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getMyView(int position, View convertView, ViewGroup parent) {
         ViewHolder vh = null;
         if (convertView == null){
             vh = new ViewHolder();
             //加载布局文件
-            convertView = inflater.inflate(R.layout.view_soft_mgr_list_item, null);
+            convertView = layoutInflater.inflate(R.layout.view_soft_mgr_list_item, null);
             //找到要使用的控件
             vh.checkBox = (CheckBox) convertView.findViewById(R.id.soft_mgr_list_item_cb);
             vh.imageView = (ImageView) convertView.findViewById(R.id.soft_mgr_list_item_iv);
@@ -103,7 +73,7 @@ public class SoftMgrListAdapter extends BaseAdapter implements CompoundButton.On
         }
 
         //添加数据
-        AppInfo appInfo = appInfos.get(position);
+        AppInfo appInfo = infos.get(position);
         PackageInfo packageInfo = appInfo.getInfo();
         //给所有多选框设置监听
         vh.checkBox.setOnCheckedChangeListener(this);

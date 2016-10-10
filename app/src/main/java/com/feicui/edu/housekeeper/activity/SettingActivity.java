@@ -25,36 +25,30 @@ public class SettingActivity extends BaseActivity {
     private RelativeLayout help,about;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        super.onCreate(savedInstanceState);
         View.OnClickListener on = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SettingActivity.this.finish();
             }
         };
+        bar.initActionBar("设 置", R.drawable.home_left, ActionBarView.ID_BAR, on);
+    }
+
+    @Override
+    protected void initView() {
         notification = (ToggleButton) findViewById(R.id.setting_notification);
         boolean toggleState = SharedPreferenceUtil.getToggleState(this);
         notification.setChecked(toggleState);
         help = (RelativeLayout) findViewById(R.id.setting_help);
         about = (RelativeLayout) findViewById(R.id.setting_about);
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("设 置", R.drawable.home_left, ActionBarView.ID_BAR, on);
+    }
 
-        notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //保存状态
-                SharedPreferenceUtil.saveToggleState(SettingActivity.this, isChecked);
-
-                if (isChecked){
-                    NotificationUtil.showAppIconNotification(SettingActivity.this);
-                }else{
-                    NotificationUtil.closeAppIconNotification(SettingActivity.this);
-                }
-            }
-        });
-
+    @Override
+    protected void setListener() {
+        //关于
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +64,20 @@ public class SettingActivity extends BaseActivity {
                 intent.putExtra("param", SettingActivity.class.getSimpleName());
                 SettingActivity.this.startActivity(intent);
 
+            }
+        });
+        //通知
+        notification.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //保存状态
+                SharedPreferenceUtil.saveToggleState(SettingActivity.this, isChecked);
+
+                if (isChecked){
+                    NotificationUtil.showAppIconNotification(SettingActivity.this);
+                }else{
+                    NotificationUtil.closeAppIconNotification(SettingActivity.this);
+                }
             }
         });
     }

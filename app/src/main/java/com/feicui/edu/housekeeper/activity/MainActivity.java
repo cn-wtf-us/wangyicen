@@ -8,15 +8,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.feicui.edu.housekeeper.R;
+import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    private ImageView imageView;
+    private Animation animation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView imageView = (ImageView) findViewById(R.id.iv_logo);
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.alpha);
+        super.onCreate(savedInstanceState);
         imageView.startAnimation(animation);
         //设置动画
         Animation.AnimationListener animationListener = new Animation.AnimationListener() {
@@ -38,5 +39,16 @@ public class MainActivity extends AppCompatActivity {
         };
         animation.setAnimationListener(animationListener);
         imageView.startAnimation(animation);
+    }
+
+    @Override
+    protected void initView() {
+        imageView = (ImageView) findViewById(R.id.iv_logo);
+        animation = AnimationUtils.loadAnimation(this, R.anim.alpha);
+    }
+
+    @Override
+    protected void setListener() {
+
     }
 }

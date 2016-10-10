@@ -1,21 +1,19 @@
 package com.feicui.edu.housekeeper.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.feicui.edu.housekeeper.R;
+import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends BaseActivity {
     private ActionBarView bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        bar = (ActionBarView) findViewById(R.id.view_action_bar);
+        super.onCreate(savedInstanceState);
 
         View.OnClickListener on = new View.OnClickListener() {
             @Override
@@ -24,6 +22,17 @@ public class AboutActivity extends AppCompatActivity {
             }
         };
         bar.initActionBar("关 于", R.drawable.home_left, ActionBarView.ID_BAR, on);
+
+    }
+
+    @Override
+    protected void initView() {
+        bar = (ActionBarView) findViewById(R.id.view_action_bar);
+
+    }
+
+    @Override
+    protected void setListener() {
 
     }
 
