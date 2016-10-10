@@ -66,13 +66,27 @@
             android:textSize="16sp"
             />
 
-        <ListView
-            android:id="@+id/rocket_lv"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:cacheColorHint="@color/transparent"
-            />
+            android:layout_weight="1">
+            <ListView
+                android:id="@+id/rocket_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@color/transparent"
+                />
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rocket_list_pb"
+                android:layout_gravity="center"
+                android:indeterminate="false"
+                android:indeterminateDrawable="@drawable/softmgr_progressbar_rotate"
+                android:visibility="visible"/>
+        </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

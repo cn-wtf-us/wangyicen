@@ -124,9 +124,10 @@ public class AppInfoManager {
                     e.printStackTrace();
                 }
             }
-
-
         }
+
+        maps.put(SYS_APPLICATION, sysRunningApps);
+        maps.put(USER_APPLICATION, userRunningApps);
 
         return null;
     }

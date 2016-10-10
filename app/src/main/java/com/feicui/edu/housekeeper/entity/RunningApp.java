@@ -53,4 +53,15 @@ public class RunningApp {
     public void setRam(int ram) {
         this.ram = ram;
     }
+
+    @Override
+    public String toString() {
+        return "RunningApp{" +
+                "icon=" + icon +
+                ", isChecked=" + isChecked +
+                ", label='" + label + '\'' +
+                ", ram=" + ram +
+                ", isSys=" + isSys +
+                '}';
+    }
 }

@@ -14,10 +14,12 @@ import com.feicui.edu.housekeeper.adapter.RocketListAdapter;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.utils.DeviceUtil;
 import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
+import com.feicui.edu.housekeeper.biz.AppInfoManager;
 import com.feicui.edu.housekeeper.entity.RunningApp;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class SpeedupActivity extends BaseActivity {
@@ -25,9 +27,11 @@ public class SpeedupActivity extends BaseActivity {
     private ListView lv;
     private TextView tv1,tv2,tv3;
     private CheckBox all;
-    private ProgressBar pb;
+    private ProgressBar pb1, pb2;
     private ActionBarView bar;
     private RocketListAdapter adapter;
+    private AppInfoManager appInfoManager;
+    private HashMap<Integer, ArrayList<RunningApp>> runningApps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,30 @@ public class SpeedupActivity extends BaseActivity {
         long usedMem = MemoryUtil.getPhoneTotalRamMemory() - MemoryUtil.getPhoneAvRamMemory(this);
         long totalMem = MemoryUtil.getPhoneTotalRamMemory();
         tv3.setText("已用内存：" + Formatter.formatFileSize(this, usedMem) + "/" + Formatter.formatFileSize(this, totalMem));
-        pb.setProgress((int)Math.round(usedMem / (double)totalMem * 100));
+        pb1.setProgress((int)Math.round(usedMem / (double)totalMem * 100));
+
+        pb2.setVisibility(View.VISIBLE);
+        lv.setVisibility(View.GONE);
+        new Thread(){
+            @Override
+            public void run() {
+                appInfoManager = AppInfoManager.getInstance(SpeedupActivity.this);
+                runningApps = appInfoManager.getRunningAppInfos();
+
+                //Handler   runOnUiThread   让参数中的代码在主线程中执行
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayList<RunningApp> sys = runningApps.get(appInfoManager.SYS_APPLICATION);
+                        ArrayList<RunningApp> user = runningApps.get(appInfoManager.USER_APPLICATION);
+
+                        pb2.setVisibility(View.GONE);
+                        lv.setVisibility(View.VISIBLE);
+                    }
+                });
+
+            }
+        }.start();
 
     }
 
@@ -52,7 +79,8 @@ public class SpeedupActivity extends BaseActivity {
         tv2 = (TextView) findViewById(R.id.rocket_phone_label);
         tv3 = (TextView) findViewById(R.id.rocket_phone_total);
         all = (CheckBox) findViewById(R.id.rocket_all);
-        pb = (ProgressBar) findViewById(R.id.rocket_progressbar);
+        pb1 = (ProgressBar) findViewById(R.id.rocket_progressbar);
+        pb2 = (ProgressBar) findViewById(R.id.rocket_list_pb);
         adapter = new RocketListAdapter(this);
     }
 
