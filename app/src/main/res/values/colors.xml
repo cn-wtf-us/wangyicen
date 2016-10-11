@@ -9,4 +9,5 @@
     <color name="pressed">#d7d0d0</color>
     <color name="blue">#1f77e4</color>
     <color name="transparent">#00000000</color>
+    <color name="circle_soft_mgr">#d69871</color>
 </resources>

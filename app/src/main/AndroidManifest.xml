@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
         android:allowBackup="true"
@@ -33,7 +33,14 @@
         <activity android:name=".activity.FileManagerActivity" />
         <activity android:name=".activity.SDCleanActivity" />
         <activity android:name=".activity.AboutActivity" />
-        <activity android:name=".activity.SoftMgrListActivity"></activity>
+        <activity android:name=".activity.SoftMgrListActivity" />
+        <activity android:name=".demo.CanvasActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
     </application>
 
 </manifest>

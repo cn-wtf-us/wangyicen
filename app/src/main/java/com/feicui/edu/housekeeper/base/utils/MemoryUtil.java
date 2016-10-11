@@ -23,7 +23,6 @@ public class MemoryUtil {
         int count = statFs.getBlockCount();
 //        获取每个内存块的大小
         long size = statFs.getBlockSize();
-
         return size * count;
     }
 
@@ -49,7 +48,6 @@ public class MemoryUtil {
         return size * count;
     }
 
-
     //    获取SD卡空闲空间ROM
     public static long getPhoneSDAvRom(){
         String path = Environment.getExternalStorageDirectory().getPath();
@@ -58,7 +56,6 @@ public class MemoryUtil {
         int count = statFs.getAvailableBlocks();
 //        获取每个内存块的大小
         long size = statFs.getBlockSize();
-
         return size * count;
     }
 

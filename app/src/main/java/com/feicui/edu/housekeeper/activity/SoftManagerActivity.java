@@ -11,7 +11,6 @@ import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
-
 public class SoftManagerActivity extends BaseActivity {
 
     private ActionBarView bar;
@@ -40,10 +39,9 @@ public class SoftManagerActivity extends BaseActivity {
 
         //计算百分比
         pb1.setProgress((int)Math.round((MemoryUtil.getPhoneSelfTotalRom() -
-                MemoryUtil.getPhoneSelfAvRom()) / (double)MemoryUtil.getPhoneSelfTotalRom()) * 100);
+                MemoryUtil.getPhoneSelfAvRom()) / (double)MemoryUtil.getPhoneSelfTotalRom() * 100));
         pb2.setProgress((int)Math.round((MemoryUtil.getPhoneSDRom() -
-                MemoryUtil.getPhoneSDAvRom()) / (double)MemoryUtil.getPhoneSDRom()) * 100);
-
+                MemoryUtil.getPhoneSDAvRom()) / (double)MemoryUtil.getPhoneSDRom() * 100));
     }
 
     @Override
