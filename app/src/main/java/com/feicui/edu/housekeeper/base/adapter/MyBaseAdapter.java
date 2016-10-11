@@ -50,19 +50,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         return infos;
     }
 
-    public void setDataFromAdapter(ArrayList<T> adapterDatas) {
-        adapterDatas.clear();
-        if (adapterDatas != null){
-            adapterDatas.addAll(adapterDatas);
-        }
-    }
 
-    //添加数据到当前适配器集合
-    public void addDataToAdapter(T e){
-        if (e != null){
-            infos.add(e);
-        }
-    }
 
     //添加数据到当前适配器集合
     public void addDatas(ArrayList<T> infos){

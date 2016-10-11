@@ -69,7 +69,7 @@ public class MemoryUtil {
             FileReader fileReader = new FileReader("proc/meminfo");
             bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
-            String[] datas = line.split("//s+");
+            String[] datas = line.split("\\s+");
             return Integer.parseInt(datas[1]) * 1024;
         } catch (IOException e) {
             e.printStackTrace();

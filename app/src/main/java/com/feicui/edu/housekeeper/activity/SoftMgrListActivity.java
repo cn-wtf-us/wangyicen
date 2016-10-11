@@ -68,6 +68,13 @@ public class SoftMgrListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_soft_mgr_list);
         super.onCreate(savedInstanceState);
+        View.OnClickListener on = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SoftMgrListActivity.this.finish();
+            }
+        };
+        bar.initActionBar("软件列表",ActionBarView.ID_BAR, ActionBarView.ID_BAR, on);
         lv.setAdapter(adapter);
         getData();
     }
@@ -116,7 +123,7 @@ public class SoftMgrListActivity extends BaseActivity {
         appManager = AppInfoManager.getInstance(this);
         key = getIntent().getIntExtra("soft", 1);
         adapter = new SoftMgrListAdapter(SoftMgrListActivity.this);
-        bar.initActionBar("软件列表",ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
+
         lv = (ListView) findViewById(R.id.soft_mgr_list_lv);
         progressBar = (ProgressBar) findViewById(R.id.soft_mgr_list_pb);
         allSel = (CheckBox) findViewById(R.id.soft_mgr_list_all);

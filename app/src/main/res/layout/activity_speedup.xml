@@ -57,6 +57,7 @@
             android:layout_marginBottom="5dp"/>
 
         <Button
+            android:id="@+id/rocket_clean"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="一键清理"
@@ -97,9 +98,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/rocket_show"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="只显示用户进程"
+                android:text="显示用户进程"
                 android:background="@drawable/rocket_list_button_clean"
                 android:onClick="showProgress"
                 android:textColor="@color/white"

@@ -7,6 +7,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Debug;
+import android.text.format.Formatter;
+import android.util.Log;
 
 import com.feicui.edu.housekeeper.entity.AppInfo;
 import com.feicui.edu.housekeeper.entity.RunningApp;
@@ -84,7 +86,7 @@ public class AppInfoManager {
     }
 
     //获取正在运行的应用程序信息
-    public HashMap<Integer, ArrayList<RunningApp>> getRunningAppInfos(){
+    public HashMap<Integer, ArrayList<RunningApp>> getRunningAppInfos(Context context){
         HashMap<Integer, ArrayList<RunningApp>> maps = new HashMap<Integer, ArrayList<RunningApp>>();
         ArrayList<RunningApp> sysRunningApps = new ArrayList<RunningApp>();
         ArrayList<RunningApp> userRunningApps = new ArrayList<RunningApp>();
@@ -96,40 +98,46 @@ public class AppInfoManager {
             RunningApp runningApp = new RunningApp();
             ActivityManager.RunningAppProcessInfo runningAppProcessInfo = runningAppProcessInfos.get(x);
             int pid = runningAppProcessInfo.pid;
-            Debug.MemoryInfo[] memoryInfos = activityManager.getProcessMemoryInfo(new int[pid]);
+            Debug.MemoryInfo[] memoryInfos = activityManager.getProcessMemoryInfo(new int[]{pid});
             //当前应用程序所占用的运存
-            int memoryInfo = memoryInfos[0].dalvikPrivateDirty;
+            String memoryInfo = Formatter.formatFileSize(context, memoryInfos[0].getTotalPrivateDirty());
+            Log.i("AppInfoManager", memoryInfos[0].getTotalPrivateDirty()+"");
             String packageName = runningAppProcessInfo.processName;
             int importance = runningAppProcessInfo.importance;
             //首先判断哪些进程是可以杀死的
-            if (importance >= ActivityManager.RunningAppProcessInfo.IMPORTANCE_SERVICE){
+            if (importance >= runningAppProcessInfo.IMPORTANCE_SERVICE){
                 try {
                     Drawable icon = packageManager.getApplicationIcon(packageName);
-                    ApplicationInfo applicationInfo = packageManager.getApplicationInfo(packageName, 0);
+                    ApplicationInfo applicationInfo = packageManager.getApplicationInfo(packageName,0);
                     String label = packageManager.getApplicationLabel(applicationInfo).toString();
 
                     //添加数据
                     runningApp.setLabel(label);
                     runningApp.setIcon(icon);
                     runningApp.setRam(memoryInfo);
+                    runningApp.setPackageName(packageName);
 
                     //判断是系统软件还是用户软件
                     if((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){//用户应用
+                        runningApp.setSys(false);
                         userRunningApps.add(runningApp);
                     }else if((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0){//系统应用
+                        runningApp.setSys(true);
                         sysRunningApps.add(runningApp);
                     }
-
                 } catch (PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
                 }
             }
         }
-
         maps.put(SYS_APPLICATION, sysRunningApps);
         maps.put(USER_APPLICATION, userRunningApps);
+        return maps;
+    }
 
-        return null;
+    //杀死进程
+    public void killProgress(String packageName){
+        activityManager.killBackgroundProcesses(packageName);
     }
 
 }

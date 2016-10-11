@@ -9,8 +9,17 @@ public class RunningApp {
     private boolean isChecked;
     private Drawable icon;
     private String label;
-    private int ram;
+    private String ram;
+    private String packageName;
     private boolean isSys;
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
 
     public RunningApp(){}
 
@@ -46,11 +55,11 @@ public class RunningApp {
         this.label = label;
     }
 
-    public int getRam() {
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
