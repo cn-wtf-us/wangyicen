@@ -28,19 +28,17 @@ public class SoftMgrPiechart extends View {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (curPhoneAngel == phoneAngel && curSDAngel == sdAngel){
-                    isRun = false;
-                }
                 if (curPhoneAngel > phoneAngel){
                     curPhoneAngel = phoneAngel;
                 }
                 if (curSDAngel > sdAngel){
                     curSDAngel = sdAngel;
                 }
-                curPhoneAngel++;
-                curSDAngel++;
-
-
+                curPhoneAngel += 2;
+                curSDAngel += 2;
+                if (curPhoneAngel == phoneAngel && curSDAngel == sdAngel){
+                    isRun = false;
+                }
                 postInvalidate();
             }
         }
@@ -88,7 +86,7 @@ public class SoftMgrPiechart extends View {
         //手机内存
         canvas.drawArc(rectF, -90, phoneAngel, true, paint1);
         //SD卡内存
-        canvas.drawArc(rectF, -90 + phoneAngel, sdAngel, true, paint2);
+        canvas.drawArc(rectF, (-90 + phoneAngel), sdAngel, true, paint2);
 //        canvas.drawCircle(150, 150, 150, paint);
     }
 }

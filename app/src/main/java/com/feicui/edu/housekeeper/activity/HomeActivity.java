@@ -1,9 +1,11 @@
 package com.feicui.edu.housekeeper.activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
+import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 import com.feicui.edu.housekeeper.view.MainPieChart;
 
@@ -11,6 +13,7 @@ import com.feicui.edu.housekeeper.view.MainPieChart;
 public class HomeActivity extends BaseActivity {
     private ActionBarView bar;
     private MainPieChart mainPieChart;
+    private TextView point;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,15 @@ public class HomeActivity extends BaseActivity {
         };
         bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right, on);
 
+        //计算角度值
+        long usedMem = MemoryUtil.getPhoneTotalRamMemory() - MemoryUtil.getPhoneAvRamMemory(this);
+        long totalMem = MemoryUtil.getPhoneTotalRamMemory();
+        //计算显示百分比数
+        point.setText((int)Math.round(usedMem / (float)totalMem * 100) + "");
+        //计算扇形角度
+        float angel = (usedMem / (float)totalMem) * 360;
+        //设置最大角度
+        mainPieChart.setMaxAngel(angel);
         mainPieChart.startMove();
     }
 
@@ -37,6 +49,7 @@ public class HomeActivity extends BaseActivity {
     protected void initView() {
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
         mainPieChart = (MainPieChart) findViewById(R.id.view_main_pie_chart);
+        point = (TextView) findViewById(R.id.view_main_pie_chart_tv);
     }
 
     @Override

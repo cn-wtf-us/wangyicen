@@ -18,23 +18,48 @@ public class MainPieChart extends View {
     private Paint paint;
     private RectF rectF;
     private float angel;
+    private float maxAngel;
+    private boolean isRun = true;
+    private int state = 0;
+    private final int STATE_BACK = 0;
+    private final int STATE_GO = 1;
+
     private Thread thread;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while (isRun){
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                switch (state){
+                    case STATE_BACK:
+                        if (angel < 0){
+                            angel = 0;
+                            //设置前进
+                            state = 1;
+                        }
+                        angel -= 10;
+                        break;
+                    case STATE_GO:
+                        if (angel > maxAngel){
+                            angel = maxAngel;
+                            //结束循环
+                            isRun = false;
+                        }
+                        angel += 10;
+                        break;
+                }
+                postInvalidate();
             }
-            if (angel < 0){
-                angel = 0;
-            }
-            angel -= 10;
-
-            postInvalidate();
         }
     };
+
+    public void setMaxAngel(float maxAngel){
+        this.maxAngel = maxAngel;
+    }
 
     public MainPieChart(Context context) {
         this(context, null);
@@ -73,6 +98,6 @@ public class MainPieChart extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //画圆环
-        canvas.drawArc(rectF, -90, angel, false, paint);
+        canvas.drawArc(rectF, -90, angel, true, paint);
     }
 }
