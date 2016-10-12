@@ -10,10 +10,12 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
 import com.feicui.edu.housekeeper.view.ActionBarView;
+import com.feicui.edu.housekeeper.view.SoftMgrPiechart;
 
 public class SoftManagerActivity extends BaseActivity {
 
     private ActionBarView bar;
+    private SoftMgrPiechart softMgrPiechart;
     private TextView phoneTv, SDCardTv;
     private ProgressBar pb1, pb2;
     public static final int ALL = 1;
@@ -42,6 +44,15 @@ public class SoftManagerActivity extends BaseActivity {
                 MemoryUtil.getPhoneSelfAvRom()) / (double)MemoryUtil.getPhoneSelfTotalRom() * 100));
         pb2.setProgress((int)Math.round((MemoryUtil.getPhoneSDRom() -
                 MemoryUtil.getPhoneSDAvRom()) / (double)MemoryUtil.getPhoneSDRom() * 100));
+
+        //计算手机中内存占用的角度
+        float phoneAngel = (MemoryUtil.getPhoneSelfTotalRom() - MemoryUtil.getPhoneSelfAvRom()) / (float)MemoryUtil.getPhoneSelfTotalRom() * 360;
+        float sdAngel = (MemoryUtil.getPhoneSDRom() - MemoryUtil.getPhoneSDAvRom()) / (float)MemoryUtil.getPhoneSDRom() * 360;
+        //传递角度
+        softMgrPiechart.setAngel(phoneAngel, sdAngel);
+        //开始绘制饼图
+        softMgrPiechart.startDraw();
+
     }
 
     @Override
@@ -52,6 +63,7 @@ public class SoftManagerActivity extends BaseActivity {
         SDCardTv = (TextView) findViewById(R.id.soft_mgr_sdcard_memory);
         pb1 = (ProgressBar) findViewById(R.id.progressBar1);
         pb2 = (ProgressBar) findViewById(R.id.progressBar2);
+        softMgrPiechart = (SoftMgrPiechart) findViewById(R.id.soft_mgr_view);
     }
 
     @Override

@@ -5,10 +5,13 @@ import android.view.View;
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.view.ActionBarView;
+import com.feicui.edu.housekeeper.view.MainPieChart;
 
 
 public class HomeActivity extends BaseActivity {
     private ActionBarView bar;
+    private MainPieChart mainPieChart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
@@ -27,16 +30,29 @@ public class HomeActivity extends BaseActivity {
         };
         bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right, on);
 
+        mainPieChart.startMove();
     }
 
     @Override
     protected void initView() {
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
+        mainPieChart = (MainPieChart) findViewById(R.id.view_main_pie_chart);
     }
 
     @Override
     protected void setListener() {
 
+    }
+
+    public void clean(View view){
+        switch (view.getId()){
+            case R.id.view_main_pie_chart_iv:
+
+                break;
+            case R.id.view_main_pie_chart_tv:
+
+                break;
+        }
     }
 
     public void hitHomeItem(View view){

@@ -12,6 +12,9 @@
         android:layout_width="wrap_content">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
+
+<include layout="@layout/view_main_piechart"/>
+
     <!-- 主页面选项组 -->
 <include layout="@layout/layout_homeitem"/>
 </LinearLayout>

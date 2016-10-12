@@ -35,6 +35,7 @@ public class MyCanvas extends View {
         super.onDraw(canvas);
 
         canvas.drawCircle(100, 100, 50, paint);
+
         Path path = new Path();
         path.moveTo(300, 400);
         path.lineTo(500, 400);

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="216dp"
+    android:layout_centerInParent="true">
+
+    <com.feicui.edu.housekeeper.view.MainPieChart
+        android:id="@+id/view_main_pie_chart"
+        android:layout_width="216dp"
+        android:layout_height="216dp"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/view_main_pie_chart_iv"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:onClick="clean"
+        android:src="@drawable/main_piechart"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 手机加速 "
+        android:onClick="clean"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:background="@drawable/main_clean_selector"
+        android:layout_alignBottom="@id/view_main_pie_chart_iv"
+        android:layout_marginBottom="30dp"
+        android:layout_centerInParent="true"
+        />
+    <TextView
+        android:id="@+id/view_main_pie_chart_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@id/view_main_pie_chart_tv"
+        android:layout_toRightOf="@id/view_main_pie_chart_tv"/>
+
+
+</RelativeLayout>

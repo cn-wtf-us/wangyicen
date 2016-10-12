@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <com.feicui.edu.housekeeper.view.SoftMgrCanvas
+        <com.feicui.edu.housekeeper.view.SoftMgrPiechart
             android:id="@+id/soft_mgr_view"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -63,7 +63,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_margin="5dp"
-                android:background="#073" />
+                android:background="#8c50ff" />
 
             <TextView
                 android:layout_width="wrap_content"
