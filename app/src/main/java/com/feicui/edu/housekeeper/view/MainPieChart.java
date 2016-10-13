@@ -19,15 +19,22 @@ public class MainPieChart extends View {
     private RectF rectF;
     private float angel;
     private float maxAngel;
-    private boolean isRun = true;
     private int state = 0;
     private final int STATE_BACK = 0;
     private final int STATE_GO = 1;
+    private boolean isRun = true;
+    //设置数组
+    private int[] speed = {1, 1, 1, 2, 2, 2, 4, 4, 4, 8, 8, 8, 12, 12, 12};
 
     private Thread thread;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
+            int index = 0;
+            if (!isRun){
+                return;
+            }
+            isRun = true;
             while (isRun){
                 try {
                     Thread.sleep(200);
@@ -39,17 +46,26 @@ public class MainPieChart extends View {
                         if (angel < 0){
                             angel = 0;
                             //设置前进
-                            state = 1;
+                            state = STATE_GO;
                         }
-                        angel -= 10;
+                        if (index >= speed.length){
+                            index = speed.length - 1;
+                        }
+                        angel -= speed[index];
+                        index++;
                         break;
                     case STATE_GO:
                         if (angel > maxAngel){
                             angel = maxAngel;
                             //结束循环
                             isRun = false;
+                            state = STATE_BACK;
                         }
-                        angel += 10;
+                        if (index >= speed.length){
+                            index = speed.length - 1;
+                        }
+                        angel += speed[index];
+                        index++;
                         break;
                 }
                 postInvalidate();

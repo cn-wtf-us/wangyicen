@@ -32,7 +32,13 @@ public class HomeActivity extends BaseActivity {
             }
         };
         bar.initActionBar("HouseKeeper",R.drawable.home_left, R.drawable.home_right, on);
+        //计算角度
+        initAngel();
 
+
+    }
+
+    private void initAngel() {
         //计算角度值
         long usedMem = MemoryUtil.getPhoneTotalRamMemory() - MemoryUtil.getPhoneAvRamMemory(this);
         long totalMem = MemoryUtil.getPhoneTotalRamMemory();
@@ -58,14 +64,8 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void clean(View view){
-        switch (view.getId()){
-            case R.id.view_main_pie_chart_iv:
-
-                break;
-            case R.id.view_main_pie_chart_tv:
-
-                break;
-        }
+        //计算角度
+        initAngel();
     }
 
     public void hitHomeItem(View view){

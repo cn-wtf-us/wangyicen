@@ -23,8 +23,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:cacheColorHint="@color/transparent"
-            android:visibility="gone">
+            android:cacheColorHint="@color/transparent">
         </ListView>
 
         <ProgressBar

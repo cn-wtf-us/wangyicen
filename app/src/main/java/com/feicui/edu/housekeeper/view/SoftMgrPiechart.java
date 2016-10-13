@@ -18,13 +18,15 @@ public class SoftMgrPiechart extends View {
     private float phoneAngel, sdAngel;
     private float curPhoneAngel, curSDAngel;
     private boolean isRun = true;
+
     private Thread thread;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
+
             while (isRun){
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
