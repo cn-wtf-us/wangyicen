@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -13,7 +14,12 @@ import android.widget.TextView;
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.PhoneCheckAdapter;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
+import com.feicui.edu.housekeeper.base.utils.DeviceUtil;
+import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
+import com.feicui.edu.housekeeper.entity.DeviceInfo;
 import com.feicui.edu.housekeeper.view.ActionBarView;
+
+import java.util.ArrayList;
 
 
 public class PhoneCheckActivity extends BaseActivity {
@@ -24,7 +30,8 @@ public class PhoneCheckActivity extends BaseActivity {
     private ListView listView;
     private PhoneCheckAdapter adapter;
     private BatteryReceiver receiver;
-    private int scale, level;
+    private ArrayList<DeviceInfo> infos;
+    private int scale, level, tempreture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +46,7 @@ public class PhoneCheckActivity extends BaseActivity {
         };
         bar.initActionBar("手机检测", R.id.iv_left, ActionBarView.ID_BAR, on);
         listView.setAdapter(adapter);
-        int point = Math.round(level / (float)scale * 100);
-        textView.setText(point + "");
-        progressBar.setProgress(point);
+
 
     }
 
@@ -51,17 +56,73 @@ public class PhoneCheckActivity extends BaseActivity {
         progressBar = (ProgressBar) findViewById(R.id.phone_check_progressbar);
         textView = (TextView) findViewById(R.id.phone_check_point);
         listView = (ListView) findViewById(R.id.phone_check_lv);
+        infos = new ArrayList<DeviceInfo>();
         receiver = new BatteryReceiver();
         IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         //注册广播，动态注册
         registerReceiver(receiver, filter);
         adapter = new PhoneCheckAdapter(this);
 
+        textView.setText(level / (float)scale * 100 + "");
+        progressBar.setMax(scale);
+        progressBar.setProgress(Math.round(level / (float)scale * 100));
+
+        //获取列表中的数据
+        getData();
+
+    }
+
+    private void getData() {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                setData(R.drawable.setting_info_icon_version,
+                        "设备名称："+DeviceUtil.getPhoneBrand(),
+                        "系统版本："+DeviceUtil.getPhoneVersion());
+                setData(R.drawable.setting_info_icon_space,
+                        "全部运行内存：" + (MemoryUtil.getPhoneTotalRamMemory()/1024/1024) + "M",
+                        "剩余运行内存：" + (MemoryUtil.getPhoneAvRamMemory(PhoneCheckActivity.this)/1024/1024) + "M");
+                setData(R.drawable.setting_info_icon_cpu,
+                        "CPU名称："+ DeviceUtil.getCpuName(),
+                        "CPU数量：" + DeviceUtil.getCpuNumber());
+                setData(R.drawable.setting_info_icon_camera,
+                        "手机分辨率：" + DeviceUtil.getDisplayMetrics(PhoneCheckActivity.this),
+                        "相机分辨率：" + DeviceUtil.getCameraMetrics(PhoneCheckActivity.this));
+                setData(R.drawable.setting_info_icon_root,
+                        "基带版本：" + DeviceUtil.getRadio(),
+                        "是否ROOT：" + (DeviceUtil.isRoot()?"是":"否"));
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.addDatas(infos);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
+            }
+        }.start();
+    }
+
+    //设置手机设备数据信息
+    private void setData(int pic, String text1, String text2){
+        DeviceInfo info= new DeviceInfo();
+        info.setPic(pic);
+        info.setInfo1(text1);
+        info.setInfo2(text2);
+        infos.add(info);
     }
 
     @Override
     protected void setListener() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
     }
 
     class BatteryReceiver extends BroadcastReceiver{
@@ -70,17 +131,17 @@ public class PhoneCheckActivity extends BaseActivity {
         public void onReceive(Context context, Intent intent) {
             //获取电池中的信息
             //获取手机总电量
-            scale = intent.getIntExtra("scale", 0);
+            scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0);
             //获取当前电量
-            level = intent.getIntExtra("level", 0);
+            level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
             //获取手机电池温度
-            int tempreture = intent.getIntExtra("tempreture", 0);
+            tempreture = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
             //获取手机电池健康程度
-            int health = intent.getIntExtra("health", 0);
+            int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
             //获取手机电池电压状态
-            int voltage = intent.getIntExtra("voltage", 0);
+            int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
             //获取手机电池当前状态
-            int status = intent.getIntExtra("status", 0);
+            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
 
         }
     }

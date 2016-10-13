@@ -16,15 +16,20 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.adapter.MyBaseAdapter;
 import com.feicui.edu.housekeeper.base.utils.BitmapCache;
 import com.feicui.edu.housekeeper.entity.AppInfo;
+import com.feicui.edu.housekeeper.entity.DeviceInfo;
+
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/9/30 0030.
  */
-public class PhoneCheckAdapter extends MyBaseAdapter<AppInfo>  {
+public class PhoneCheckAdapter extends MyBaseAdapter<DeviceInfo>  {
 
     public PhoneCheckAdapter(Context context) {
         super(context);
     }
+
+
 
     class ViewHolder{
         ImageView imageView;
@@ -48,6 +53,12 @@ public class PhoneCheckAdapter extends MyBaseAdapter<AppInfo>  {
         }else {
             vh = (ViewHolder) convertView.getTag();
         }
+
+        DeviceInfo deviceInfo = infos.get(position);
+        vh.imageView.setImageResource(deviceInfo.getPic());
+        vh.textView1.setText(deviceInfo.getInfo1());
+        vh.textView2.setText(deviceInfo.getInfo2());
+
 
         return convertView;
     }

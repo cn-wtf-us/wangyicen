@@ -16,9 +16,8 @@
         android:id="@+id/phone_check_list_item_tv1"
         android:layout_toRightOf="@id/phone_check_list_item_iv"
         android:layout_alignTop="@+id/phone_check_list_item_iv"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="middle"
         android:singleLine="true"
         android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
         />
@@ -26,11 +25,10 @@
         android:id="@+id/phone_check_list_item_tv2"
         android:layout_toRightOf="@id/phone_check_list_item_iv"
         android:layout_alignBottom="@id/phone_check_list_item_iv"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="middle"
         android:singleLine="true"
-        android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+        android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
         />
 
 </RelativeLayout>

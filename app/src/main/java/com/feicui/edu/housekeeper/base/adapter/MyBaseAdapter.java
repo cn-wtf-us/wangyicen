@@ -6,10 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Administrator on 2016/9/18 0018.
  */
@@ -59,5 +56,6 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
             this.infos.addAll(infos);
         }
     }
+
 
 }
