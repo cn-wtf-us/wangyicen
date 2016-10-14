@@ -29,8 +29,6 @@ public class PhoneCheckAdapter extends MyBaseAdapter<DeviceInfo>  {
         super(context);
     }
 
-
-
     class ViewHolder{
         ImageView imageView;
         TextView textView1;
@@ -53,12 +51,10 @@ public class PhoneCheckAdapter extends MyBaseAdapter<DeviceInfo>  {
         }else {
             vh = (ViewHolder) convertView.getTag();
         }
-
         DeviceInfo deviceInfo = infos.get(position);
         vh.imageView.setImageResource(deviceInfo.getPic());
         vh.textView1.setText(deviceInfo.getInfo1());
         vh.textView2.setText(deviceInfo.getInfo2());
-
 
         return convertView;
     }

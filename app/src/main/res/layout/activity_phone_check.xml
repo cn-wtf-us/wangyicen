@@ -18,6 +18,8 @@
         android:layout_margin="20dp"
         android:layout_gravity="center"
         android:background="@drawable/home_entry_item"
+        android:clickable="true"
+        android:onClick="showDialog"
         android:orientation="horizontal">
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -29,8 +31,6 @@
             android:layout_gravity="center_vertical"
             android:id="@+id/phone_check_progressbar"
             android:progressDrawable="@drawable/phone_check_progressbar"
-            android:onClick="showDialog"
-            android:clickable="true"
             />
         <View
             android:layout_width="10dp"

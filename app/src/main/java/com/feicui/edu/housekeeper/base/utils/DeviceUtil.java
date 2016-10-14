@@ -77,7 +77,8 @@ public class DeviceUtil {
     //获取手机屏幕分辨率
     public static String getDisplayMetrics(Context context){
         //获取屏幕管理器
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager windowManager = (WindowManager) context.getSystemService
+                (Context.WINDOW_SERVICE);
         //获取屏幕对象
         Display display = windowManager.getDefaultDisplay();
         //创建一个空的屏幕参数对象
@@ -91,22 +92,26 @@ public class DeviceUtil {
     public static String getCameraMetrics(Context context){
         //打开摄像头
         Camera camera = Camera.open();
-        //从摄像头中获取参数
-        Camera.Parameters parameters = camera.getParameters();
-        //从参数对象中，获取相机所支持的所有分辨率
-        List<Camera.Size> sizes = parameters.getSupportedPictureSizes();
-        int max = 0;
-        Camera.Size s = null;
-        for (int x = 0; x < sizes.size(); x++) {
-            Camera.Size size = sizes.get(x);
-            if (size.width * size.height > max){
-                max = size.width * size.height;
-                s = size;
+        if (camera != null){
+            //从摄像头中获取参数
+            Camera.Parameters parameters = camera.getParameters();
+            //从参数对象中，获取相机所支持的所有分辨率
+            List<Camera.Size> sizes = parameters.getSupportedPictureSizes();
+            int max = 0;
+            Camera.Size s = null;
+            for (int x = 0; x < sizes.size(); x++) {
+                Camera.Size size = sizes.get(x);
+                if (size.width * size.height > max){
+                    max = size.width * size.height;
+                    s = size;
+                }
             }
+            camera.stopPreview();
+            camera.release();
+            camera = null;
+            return s.width + "*" + s.height;
         }
-        camera.stopPreview();
-        camera.release();
-        return s.width + "*" + s.height;
+       return " ";
     }
 
     //获取基带版本
