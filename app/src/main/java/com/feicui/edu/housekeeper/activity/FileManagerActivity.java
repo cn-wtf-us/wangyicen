@@ -1,6 +1,7 @@
 package com.feicui.edu.housekeeper.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -8,11 +9,13 @@ import android.widget.TextView;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
+import com.feicui.edu.housekeeper.biz.FileManager;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
-public class FileManagerActivity extends BaseActivity {
+public class FileManagerActivity extends BaseActivity implements FileManager.OnDataSendListener {
 
     private ActionBarView bar;
+    private FileManager fileManager;
     private TextView file_mgr_allsize;
 
     private TextView file_mgr_doc_size;
@@ -23,6 +26,7 @@ public class FileManagerActivity extends BaseActivity {
     private TextView file_mgr_all_size;
     private TextView file_mgr_pic_size;
 
+    private ImageView file_mgr_all_icon;
     private ImageView file_mgr_pic_icon;
     private ImageView file_mgr_doc_icon;
     private ImageView file_mgr_vd_icon;
@@ -30,6 +34,7 @@ public class FileManagerActivity extends BaseActivity {
     private ImageView file_mgr_apk_icon;
     private ImageView file_mgr_rar_icon;
 
+    private ProgressBar file_mgr_all_pb;
     private ProgressBar file_mgr_pic_pb;
     private ProgressBar file_mgr_doc_pb;
     private ProgressBar file_mgr_vd_pb;
@@ -50,13 +55,20 @@ public class FileManagerActivity extends BaseActivity {
         };
         bar.initActionBar("软件管理", R.id.iv_left, ActionBarView.ID_BAR, on);
 
+        searchFile();
+
+
+    }
+
+    private void searchFile() {
         new Thread(){
             @Override
             public void run() {
                 super.run();
-//                getData();
+                //第二步，查询文件个数
+                fileManager.searchFile(FileManager.sdPath, true);
             }
-        };
+        }.start();
     }
 
     @Override
@@ -72,6 +84,7 @@ public class FileManagerActivity extends BaseActivity {
         file_mgr_rar_size = (TextView) findViewById(R.id.file_mgr_rar_size);
         file_mgr_pic_size = (TextView) findViewById(R.id.file_mgr_pic_size);
 
+        file_mgr_all_icon = (ImageView) findViewById(R.id.file_mgr_all_icon);
         file_mgr_doc_icon = (ImageView) findViewById(R.id.file_mgr_doc_icon);
         file_mgr_av_icon = (ImageView) findViewById(R.id.file_mgr_av_icon);
         file_mgr_vd_icon = (ImageView) findViewById(R.id.file_mgr_vd_icon);
@@ -79,6 +92,8 @@ public class FileManagerActivity extends BaseActivity {
         file_mgr_rar_icon = (ImageView) findViewById(R.id.file_mgr_rar_icon);
         file_mgr_pic_icon = (ImageView) findViewById(R.id.file_mgr_pic_icon);
 
+
+        file_mgr_all_pb = (ProgressBar) findViewById(R.id.file_mgr_all_pb);
         file_mgr_pic_pb = (ProgressBar) findViewById(R.id.file_mgr_pic_pb);
         file_mgr_doc_pb = (ProgressBar) findViewById(R.id.file_mgr_doc_pb);
         file_mgr_av_pb = (ProgressBar) findViewById(R.id.file_mgr_av_pb);
@@ -91,6 +106,20 @@ public class FileManagerActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
+        fileManager = FileManager.getInstance();
+        //第一步，设置监听
+        fileManager.setOnDataSendListener(this);
 
+    }
+
+    //回调函数
+    @Override
+    public void getData(String text) {
+        file_mgr_allsize.setText(text);
+    }
+
+    @Override
+    public void searchEnd() {
+        Log.i("FileManagerActivity", "搜索完成！");
     }
 }

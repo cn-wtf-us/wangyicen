@@ -53,9 +53,20 @@
             android:layout_alignBaseline="@id/file_mgr_all_text"
             android:layout_toRightOf="@id/file_mgr_all_text"
             />
-        <ImageView
-            style="@style/FileMgrImageView"
-            />
+        <FrameLayout
+            style="@style/FileMgrFrameLayout">
+            <ImageView
+                android:id="@+id/file_mgr_all_icon"
+                style="@style/FileMgrImageView"
+                android:visibility="gone"
+                />
+            <ProgressBar
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:visibility="visible"
+                android:id="@+id/file_mgr_all_pb"/>
+        </FrameLayout>
     </RelativeLayout>
 
     <!--文档-->
