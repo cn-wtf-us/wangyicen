@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <CheckBox
+        android:id="@+id/file_mgr_list_item_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/file_mgr_list_item_iv"
+        android:layout_toRightOf="@id/file_mgr_list_item_cb"
+        android:layout_centerVertical="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/icon_softmgr"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/file_mgr_list_item_tv1"
+        android:layout_toRightOf="@id/file_mgr_list_item_iv"
+        android:layout_alignTop="@+id/file_mgr_list_item_iv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="应用名称"
+        />
+    <TextView
+        android:id="@+id/file_mgr_list_item_tv2"
+        android:layout_toRightOf="@id/file_mgr_list_item_iv"
+        android:layout_alignBottom="@id/file_mgr_list_item_iv"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="2016-10-17 12:12:45"
+        />
+    <TextView
+        android:id="@+id/file_mgr_list_item_tv3"
+        android:layout_alignBottom="@+id/file_mgr_list_item_iv"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="32.15KB"
+        />
+
+</RelativeLayout>

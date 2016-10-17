@@ -20,7 +20,7 @@
     <dimen name="actionbar_height">36dp</dimen>
     <dimen name="actionbar_titleSize">16sp</dimen>
     <dimen name="icon_width">42dp</dimen>
-    
+
     <dimen name="main_pie_chart">3dp</dimen>
 
 

@@ -67,9 +67,11 @@
     <!--文件管理界面-->
     <style name="FileMgrRelativeLayout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:padding">5dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:onClick">navigationToList</item>
+        <item name="android:clickable">true</item>
     </style>
     <style name="FileMgrLeftText">
         <item name="android:layout_width">wrap_content</item>

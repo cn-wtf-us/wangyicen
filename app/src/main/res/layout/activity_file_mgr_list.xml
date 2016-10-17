@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.feicui.edu.housekeeper.activity.FileMgrListActivity">
+
+    <com.feicui.edu.housekeeper.view.ActionBarView
+        android:id="@+id/view_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+    </com.feicui.edu.housekeeper.view.ActionBarView>
+    <ListView
+        android:id="@+id/file_mgr_list_item_lv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </ListView>
+
+    <Button
+        android:id="@+id/file_mgr_list_item_bt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="卸载所选软件"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/soft_mgr_list_button_selector"
+        />
+</LinearLayout>

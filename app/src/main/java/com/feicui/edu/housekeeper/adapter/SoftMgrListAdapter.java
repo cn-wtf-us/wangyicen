@@ -5,10 +5,8 @@ import android.content.pm.PackageInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -19,7 +17,6 @@ import com.feicui.edu.housekeeper.base.adapter.MyBaseAdapter;
 import com.feicui.edu.housekeeper.base.utils.BitmapCache;
 import com.feicui.edu.housekeeper.entity.AppInfo;
 
-import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/9/30 0030.
