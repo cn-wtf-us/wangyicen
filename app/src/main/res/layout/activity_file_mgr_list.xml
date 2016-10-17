@@ -12,15 +12,51 @@
         android:layout_height="40dp">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
-    <ListView
-        android:id="@+id/file_mgr_list_item_lv"
+    
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文件数量："/>
+        <TextView
+            android:id="@+id/file_mgr_list_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10个"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="占用空间："/>
+        <TextView
+            android:id="@+id/file_mgr_list_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11.32K"
+            android:textSize="25sp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"/>
+
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/file_mgr_list_lv"
+        android:layout_width="match_parent"
+        android:cacheColorHint="@color/transparent"
         android:layout_height="0dp"
         android:layout_weight="1">
     </ListView>
 
     <Button
-        android:id="@+id/file_mgr_list_item_bt"
+        android:id="@+id/file_mgr_list_bt"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:text="卸载所选软件"

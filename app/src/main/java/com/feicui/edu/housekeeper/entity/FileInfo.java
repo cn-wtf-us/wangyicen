@@ -10,7 +10,7 @@ public class FileInfo {
     private boolean isChecked;
     private String type;
     private File file;
-    private int icon;
+    private String icon;
 
     public boolean isChecked() {
         return isChecked;
@@ -36,15 +36,15 @@ public class FileInfo {
         this.file = file;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
-    public FileInfo(boolean isChecked, String type, File file, int icon) {
+    public FileInfo(boolean isChecked, String type, File file, String icon) {
         this.isChecked = isChecked;
         this.type = type;
         this.file = file;

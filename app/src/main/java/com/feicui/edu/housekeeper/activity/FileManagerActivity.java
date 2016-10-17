@@ -107,6 +107,9 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
             }
         };
         bar.initActionBar("软件管理", R.id.iv_left, ActionBarView.ID_BAR, on);
+
+        //每次进入主界面都先清理缓存,将所有属性初始化
+        FileManager.getInstance().clearCache();
         searchFile();
 
     }
