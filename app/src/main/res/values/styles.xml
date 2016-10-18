@@ -72,6 +72,7 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:onClick">navigationToList</item>
         <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/home_entry_item</item>
     </style>
     <style name="FileMgrLeftText">
         <item name="android:layout_width">wrap_content</item>

@@ -83,10 +83,10 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
                 intent.putExtra("title", "安装包");
                 break;
             case R.id.file_mgr_av:
-                intent.putExtra("title", "视频");
+                intent.putExtra("title", "音频");
                 break;
             case R.id.file_mgr_vd:
-                intent.putExtra("title", "音频");
+                intent.putExtra("title", "视频");
                 break;
             case R.id.file_mgr_rar:
                 intent.putExtra("title", "压缩包");
@@ -181,36 +181,38 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
     }
 
     public void updateText(String type) {
+
+        long apkTextSize = FileManager.getInstance().getApkSize();
+        long adTextSize = FileManager.getInstance().getAdSize();
+        long picTextSize = FileManager.getInstance().getPicSize();
+        long docTextSize = FileManager.getInstance().getDocSize();
+        long vdTextSize = FileManager.getInstance().getVdSize();
+        long rarTextSize = FileManager.getInstance().getRarSize();
+        long allTextSize = FileManager.getInstance().getAllSize();
+
         if (type.equals(FileTypeUtil.TYPE_APK)){
-            file_mgr_apk_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getApkSize()));
+            file_mgr_apk_size.setText(Formatter.formatFileSize(this, apkTextSize));
 
         }else if (type.equals(FileTypeUtil.TYPE_AUDIO)){
-            file_mgr_ad_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getAdSize()));
+            file_mgr_ad_size.setText(Formatter.formatFileSize(this, adTextSize));
 
         }else if (type.equals(FileTypeUtil.TYPE_IMAGE)){
-            file_mgr_pic_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getPicSize()));
+            file_mgr_pic_size.setText(Formatter.formatFileSize(this, picTextSize));
 
         }else if (type.equals(FileTypeUtil.TYPE_TXT)){
-            file_mgr_doc_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getDocSize()));
+            file_mgr_doc_size.setText(Formatter.formatFileSize(this, docTextSize));
 
         }else if (type.equals(FileTypeUtil.TYPE_VIDEO)){
-            file_mgr_vd_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getVdSize()));
+            file_mgr_vd_size.setText(Formatter.formatFileSize(this, vdTextSize));
 
         }else if (type.equals(FileTypeUtil.TYPE_ZIP)){
-            file_mgr_rar_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getRarSize()));
+            file_mgr_rar_size.setText(Formatter.formatFileSize(this, rarTextSize));
 
         }else {
-            file_mgr_allsize.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getAllSize()));
-            file_mgr_all_size.setText(Formatter.formatFileSize(this,
-                    FileManager.getInstance().getAllSize()));
+            file_mgr_allsize.setText(Formatter.formatFileSize(this, allTextSize));
+            file_mgr_all_size.setText(Formatter.formatFileSize(this, allTextSize));
         }
+
     }
 
     public void updateProgressBar() {

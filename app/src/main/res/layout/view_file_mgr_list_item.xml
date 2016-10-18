@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--android:descendantFocusability="blocksDescendants"
+解决listView内部子控件获取焦点的问题-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:padding="10dp">
 
     <CheckBox

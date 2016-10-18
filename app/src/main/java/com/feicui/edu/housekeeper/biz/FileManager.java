@@ -165,7 +165,6 @@ public class FileManager {
                     allSize += fileSize;
                     allDatas.add(fileInfo);
 
-
                     Log.i("FileManager", file.getName());
                     //数据文件已经获取到
                     on.getData(file.getName());
@@ -177,9 +176,7 @@ public class FileManager {
             if (flag){
                 on.searchEnd();
             }
-
         }
-
     }
 
     public interface OnDataSendListener{
