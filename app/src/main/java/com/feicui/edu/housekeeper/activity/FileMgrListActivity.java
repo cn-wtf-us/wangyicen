@@ -122,7 +122,73 @@ public class FileMgrListActivity extends BaseActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<FileInfo> delFiles = new ArrayList<FileInfo>();
+                //找到数据源
+                ArrayList<FileInfo> fileInfos = adapter.getDatas();
+                //将选中的文件放到delFiles集合中
+                for (FileInfo fileInfo : fileInfos) {
+                    if (fileInfo.isChecked()){
+                        delFiles.add(fileInfo);
+                    }
+                }
 
+                //循环要删除的集合
+                for (FileInfo delFile : fileInfos) {
+                    File file = delFile.getFile();
+                    //获取要删除的文件大小
+                    long size = file.length();
+                    //从SD中删除
+                    if (file.delete()){
+                        //删除数据源中的对象
+                        fileInfos.remove(delFile);
+                        //删除文件管理器中的对象
+                        FileManager.getInstance().getAllDatas().remove(delFile);
+                        //更新文件管理器中的文件大小
+                        FileManager.getInstance().setAllSize(FileManager.getInstance().getAllSize() - size);
+
+                        switch (title) {
+                            case "全部":
+                                FileManager.getInstance().getAllDatas().remove(delFile);
+                                FileManager.getInstance().setAllSize(FileManager.getInstance().getAllSize() - size);
+                                break;
+                            case "文档":
+                                FileManager.getInstance().getDocDatas().remove(delFile);
+                                FileManager.getInstance().setDocSize(FileManager.getInstance().getDocSize() - size);
+                                break;
+                            case "音频":
+                                FileManager.getInstance().getAdDatas().remove(delFile);
+                                FileManager.getInstance().setAdSize(FileManager.getInstance().getAdSize() - size);
+                                break;
+                            case "视频":
+                                FileManager.getInstance().getVdDatas().remove(delFile);
+                                FileManager.getInstance().setVdSize(FileManager.getInstance().getVdSize() - size);
+                                break;
+                            case "图片":
+                                FileManager.getInstance().getPicDatas().remove(delFile);
+                                FileManager.getInstance().setPicSize(FileManager.getInstance().getPicSize() - size);
+                                break;
+                            case "压缩包":
+                                FileManager.getInstance().getRarDatas().remove(delFile);
+                                FileManager.getInstance().setRarSize(FileManager.getInstance().getRarSize() - size);
+                                break;
+                            case "程序包":
+                                FileManager.getInstance().getApkDatas().remove(delFile);
+                                FileManager.getInstance().setApkSize(FileManager.getInstance().getApkSize() - size);
+                                break;
+                        }
+                    }
+                }
+
+                //重新设置文件的个数
+                tv1.setText(adapter.getDatas().size() + "个");
+                long sum = 0;
+                //重新设置文件的总大小
+                for (FileInfo fileInfo : fileInfos) {
+                    sum += fileInfo.getFile().length();
+                }
+                tv2.setText(Formatter.formatFileSize(FileMgrListActivity.this, sum));
+                //更新适配器
+                adapter.notifyDataSetChanged();
             }
         });
     }

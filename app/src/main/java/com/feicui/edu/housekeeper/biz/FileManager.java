@@ -34,6 +34,75 @@ public class FileManager {
     private ArrayList<FileInfo> apkDatas = new ArrayList<FileInfo>();
     private ArrayList<FileInfo> rarDatas = new ArrayList<FileInfo>();
 
+
+    public void setAdDatas(ArrayList<FileInfo> adDatas) {
+        this.adDatas = adDatas;
+    }
+
+    public void setVdSize(long vdSize) {
+        this.vdSize = vdSize;
+    }
+
+    public void setVdDatas(ArrayList<FileInfo> vdDatas) {
+        this.vdDatas = vdDatas;
+    }
+
+    public static void setSdPath(File sdPath) {
+        FileManager.sdPath = sdPath;
+    }
+
+    public void setRarSize(long rarSize) {
+        this.rarSize = rarSize;
+    }
+
+    public void setRarDatas(ArrayList<FileInfo> rarDatas) {
+        this.rarDatas = rarDatas;
+    }
+
+    public void setPicSize(long picSize) {
+        this.picSize = picSize;
+    }
+
+    public void setPicDatas(ArrayList<FileInfo> picDatas) {
+        this.picDatas = picDatas;
+    }
+
+    public void setOn(OnDataSendListener on) {
+        this.on = on;
+    }
+
+    public void setAdSize(long adSize) {
+        this.adSize = adSize;
+    }
+
+    public void setAllDatas(ArrayList<FileInfo> allDatas) {
+        this.allDatas = allDatas;
+    }
+
+    public void setAllSize(long allSize) {
+        this.allSize = allSize;
+    }
+
+    public void setApkDatas(ArrayList<FileInfo> apkDatas) {
+        this.apkDatas = apkDatas;
+    }
+
+    public void setApkSize(long apkSize) {
+        this.apkSize = apkSize;
+    }
+
+    public void setDocDatas(ArrayList<FileInfo> docDatas) {
+        this.docDatas = docDatas;
+    }
+
+    public void setDocSize(long docSize) {
+        this.docSize = docSize;
+    }
+
+    public static void setFileManager(FileManager fileManager) {
+        FileManager.fileManager = fileManager;
+    }
+
     public ArrayList<FileInfo> getAdDatas() {
         return adDatas;
     }

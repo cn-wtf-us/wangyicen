@@ -92,7 +92,23 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
                 intent.putExtra("title", "压缩包");
                 break;
         }
-        startActivity(intent);
+        //获取从子界面中携带回来的数据
+        startActivityForResult(intent, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //子界面销毁了，更新主界面上的数据
+        file_mgr_apk_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getApkSize()));
+        file_mgr_ad_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getAdSize()));
+        file_mgr_pic_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getPicSize()));
+        file_mgr_doc_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getDocSize()));
+        file_mgr_vd_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getVdSize()));
+        file_mgr_rar_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getRarSize()));
+        file_mgr_allsize.setText(Formatter.formatFileSize(this, FileManager.getInstance().getAllSize()));
+        file_mgr_all_size.setText(Formatter.formatFileSize(this, FileManager.getInstance().getAllSize()));
     }
 
     @Override
