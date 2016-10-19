@@ -41,9 +41,11 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
         boolean isFirst = shared.getBoolean("first", true);
         //判断是否是从设置界面跳转过来的
         if(className != null && className.equals(SettingActivity.class.getSimpleName())){
+            startActivity(LeadActivity.class);
             //播放音乐
             intent = new Intent(this,MusicService.class);
             startService(intent);
+
         }else{
             if(!isFirst){
                 startActivity(MainActivity.class);

@@ -9,7 +9,7 @@
     <com.feicui.edu.housekeeper.view.ActionBarView
         android:id="@+id/view_action_bar"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="@dimen/action_bar">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
 
@@ -21,8 +21,8 @@
             android:id="@+id/file_mgr_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="已发现:"
-            android:textSize="20dp"
+            android:text="@string/file_mgr_text"
+            android:textSize="20sp"
             android:layout_marginLeft="55dp"
             android:layout_centerVertical="true"
             />
@@ -30,8 +30,8 @@
             android:id="@+id/file_mgr_allsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="243.5M"
-            android:textSize="40dp"
+            android:text="@string/file_mgr_text_all_size"
+            android:textSize="40sp"
             android:layout_alignBaseline="@id/file_mgr_text1"
             android:layout_centerInParent="true"
             />
@@ -43,12 +43,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_all_text"
-            android:text="全部"
+            android:text="@string/file_mgr_text_all"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_all_size"
-            android:text="243.5M"
+            android:text="@string/file_mgr_size_all"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_all_text"
             android:layout_toRightOf="@id/file_mgr_all_text"
@@ -75,12 +75,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_doc_text"
-            android:text="文档"
+            android:text="@string/file_mgr_text_doc"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_doc_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_size_doc"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_doc_text"
             android:layout_toRightOf="@id/file_mgr_doc_text"
@@ -107,12 +107,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_vd_text"
-            android:text="视频"
+            android:text="@string/file_mgr_text_vd"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_vd_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_size_vd"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_vd_text"
             android:layout_toRightOf="@id/file_mgr_vd_text"
@@ -139,12 +139,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_av_text"
-            android:text="音频"
+            android:text="@string/file_mgr_text_ad"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_av_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_size_ad"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_av_text"
             android:layout_toRightOf="@id/file_mgr_av_text"

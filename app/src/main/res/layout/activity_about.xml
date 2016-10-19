@@ -6,6 +6,7 @@
     tools:context="com.feicui.edu.housekeeper.activity.AboutActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
+        android:id="@+id/view_action_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -16,7 +17,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
-    android:src="@drawable/about_iamge"/>
+    android:src="@drawable/about_image"/>
     <TextView
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
@@ -24,15 +25,15 @@
         android:layout_centerInParent="true"
         android:padding="10dp"
         android:layout_below="@id/iv"
-        android:textSize="20sp"
-        android:text="手机管家"/>
+        android:textSize="@dimen/about_size_title"
+        android:text="@string/about_text_title"/>
     <TextView
         android:layout_below="@id/tv1"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="V 1.0.0"
+        android:textSize="@dimen/about_size_version"
+        android:text="@string/about_text_version"
         />
 
 </RelativeLayout>

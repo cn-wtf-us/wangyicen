@@ -133,7 +133,7 @@ public class FileMgrListActivity extends BaseActivity {
                 }
 
                 //循环要删除的集合
-                for (FileInfo delFile : fileInfos) {
+                for (FileInfo delFile : delFiles) {
                     File file = delFile.getFile();
                     //获取要删除的文件大小
                     long size = file.length();
