@@ -80,7 +80,7 @@
             />
         <TextView
             android:id="@+id/file_mgr_doc_size"
-            android:text="@string/file_mgr_size_doc"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_doc_text"
             android:layout_toRightOf="@id/file_mgr_doc_text"
@@ -112,7 +112,7 @@
             />
         <TextView
             android:id="@+id/file_mgr_vd_size"
-            android:text="@string/file_mgr_size_vd"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_vd_text"
             android:layout_toRightOf="@id/file_mgr_vd_text"
@@ -144,7 +144,7 @@
             />
         <TextView
             android:id="@+id/file_mgr_av_size"
-            android:text="@string/file_mgr_size_ad"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_av_text"
             android:layout_toRightOf="@id/file_mgr_av_text"
@@ -171,12 +171,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_pic_text"
-            android:text="图像"
+            android:text="@string/file_mgr_text_pic"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_pic_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_pic_text"
             android:layout_toRightOf="@id/file_mgr_pic_text"
@@ -203,12 +203,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_rar_text"
-            android:text="压缩包"
+            android:text="@string/file_mgr_text_rar"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_rar_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_rar_text"
             android:layout_toRightOf="@id/file_mgr_rar_text"
@@ -235,12 +235,12 @@
         style="@style/FileMgrRelativeLayout">
         <TextView
             android:id="@+id/file_mgr_apk_text"
-            android:text="程序包"
+            android:text="@string/file_mgr_text_apk"
             style="@style/FileMgrLeftText"
             />
         <TextView
             android:id="@+id/file_mgr_apk_size"
-            android:text="(计算中...)"
+            android:text="@string/file_mgr_text_view"
             style="@style/FileMgrMiddleText"
             android:layout_alignBaseline="@id/file_mgr_apk_text"
             android:layout_toRightOf="@id/file_mgr_apk_text"

@@ -4,6 +4,6 @@
         android:fromAlpha="1.0"
         android:toAlpha="0.0"
         android:duration="1500"
-        android:repeatCount="2"
+        android:repeatCount="1"
         />
 </set>

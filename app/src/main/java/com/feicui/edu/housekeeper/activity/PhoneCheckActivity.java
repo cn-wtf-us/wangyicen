@@ -31,8 +31,10 @@ public class PhoneCheckActivity extends BaseActivity {
     private ListView listView;
     private PhoneCheckAdapter adapter;
     private BatteryReceiver receiver;
+    private AlertDialog alertDialog;
     private ArrayList<DeviceInfo> deviceInfos;
     private int scale, level, tempreture, voltage;
+    private int point;//设置百分比
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,20 +59,22 @@ public class PhoneCheckActivity extends BaseActivity {
         listView = (ListView) findViewById(R.id.phone_check_lv);
         deviceInfos = new ArrayList<DeviceInfo>();
         receiver = new BatteryReceiver();
+        alertDialog = new AlertDialog.Builder(this).create();
         IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         //注册广播，动态注册
         registerReceiver(receiver, filter);
         adapter = new PhoneCheckAdapter(this);
 
-        textView.setText(level / (float)scale * 100 + "");
+        point = Math.round(level / (float)scale * 100);
+
+        textView.setText(point);
         progressBar.setMax(scale);
-        progressBar.setProgress(Math.round(level / (float)scale * 100));
+        progressBar.setProgress(point);
 
         //获取列表中的数据
         getData();
 
     }
-
     private void getData() {
         new Thread(){
             @Override
@@ -100,7 +104,6 @@ public class PhoneCheckActivity extends BaseActivity {
                         adapter.notifyDataSetChanged();
                     }
                 });
-
             }
         }.start();
     }
@@ -108,10 +111,7 @@ public class PhoneCheckActivity extends BaseActivity {
     public void showDialog(){
         new AlertDialog.Builder(this)
                 .setTitle("电池电量信息：")
-                .setItems(new String[]{"电池温度"}, null)
-                .setItems(tempreture, null)
-                .setItems(new String[]{"电池电压"}, null)
-                .setItems(voltage, null)
+                .setItems(new String[]{"电池温度"+tempreture+"℃","电池电压"+voltage}, null)
                 .show();
     }
 
@@ -136,7 +136,6 @@ public class PhoneCheckActivity extends BaseActivity {
     }
 
     class BatteryReceiver extends BroadcastReceiver{
-
         @Override
         public void onReceive(Context context, Intent intent) {
             //获取电池中的信息
@@ -149,9 +148,9 @@ public class PhoneCheckActivity extends BaseActivity {
             //获取手机电池电压状态
             voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
             //获取手机电池健康程度
-            int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
+//            int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
             //获取手机电池当前状态
-            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
+//            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
 
         }
     }

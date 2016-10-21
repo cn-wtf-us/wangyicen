@@ -28,6 +28,8 @@
             android:layout_weight="1"
             android:max="100"
             android:progress="80"
+            android:clickable="true"
+            android:onClick="showDialog"
             android:layout_gravity="center_vertical"
             android:id="@+id/phone_check_progressbar"
             android:progressDrawable="@drawable/phone_check_progressbar"

@@ -20,14 +20,23 @@
     <string name="tel_title">一站式号码服务平台</string>
     <string name="about_text_title">手机管家</string>
     <string name="about_text_version">V 1.0.0</string>
+    <!--文件管理-->
     <string name="file_mgr_text">已发现:</string>
     <string name="file_mgr_text_all_size">243.5M</string>
     <string name="file_mgr_text_all">全部</string>
     <string name="file_mgr_size_all">243.5M</string>
     <string name="file_mgr_text_doc">文档</string>
-    <string name="file_mgr_size_doc">(计算中...)</string>
+    <string name="file_mgr_text_view">(计算中...)</string>
     <string name="file_mgr_text_vd">视频</string>
-    <string name="file_mgr_size_vd">(计算中...)</string>
     <string name="file_mgr_text_ad">音频</string>
-    <string name="file_mgr_size_ad">(计算中...)</string>
+    <string name="file_mgr_text_pic">图像</string>
+    <string name="file_mgr_text_rar">压缩包</string>
+    <string name="file_mgr_text_apk">程序包</string>
+    <!--主界面-->
+    <string name="home_text_rocket">手机加速</string>
+    <string name="home_text_soft_mgr">软件管理</string>
+    <string name="home_text_phone_check">手机检测</string>
+    <string name="home_text_tel_mgr">通讯大全</string>
+    <string name="home_text_file_mgr">文件管理</string>
+    <string name="home_text_clean">垃圾清理</string>
 </resources>

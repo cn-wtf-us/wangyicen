@@ -178,7 +178,6 @@ public class FileMgrListActivity extends BaseActivity {
                         }
                     }
                 }
-
                 //重新设置文件的个数
                 tv1.setText(adapter.getDatas().size() + "个");
                 long sum = 0;
