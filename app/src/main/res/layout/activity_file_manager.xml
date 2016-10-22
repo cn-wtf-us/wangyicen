@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.FileManagerActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -12,6 +13,10 @@
         android:layout_height="@dimen/action_bar">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,7 +41,10 @@
             android:layout_centerInParent="true"
             />
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--全部-->
     <RelativeLayout
         android:id="@+id/file_mgr_all"
@@ -68,7 +76,10 @@
                 android:id="@+id/file_mgr_all_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--文档-->
     <RelativeLayout
         android:id="@+id/file_mgr_doc"
@@ -100,7 +111,10 @@
                 android:id="@+id/file_mgr_doc_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--视频-->
     <RelativeLayout
         android:id="@+id/file_mgr_vd"
@@ -132,7 +146,10 @@
                 android:id="@+id/file_mgr_vd_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--音频-->
     <RelativeLayout
         android:id="@+id/file_mgr_av"
@@ -164,7 +181,10 @@
                 android:id="@+id/file_mgr_av_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--图像-->
     <RelativeLayout
         android:id="@+id/file_mgr_pic"
@@ -196,7 +216,10 @@
                 android:id="@+id/file_mgr_pic_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--压缩包-->
     <RelativeLayout
         android:id="@+id/file_mgr_rar"
@@ -228,7 +251,10 @@
                 android:id="@+id/file_mgr_rar_pb"/>
         </FrameLayout>
     </RelativeLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <!--程序包-->
     <RelativeLayout
         android:id="@+id/file_mgr_apk"
@@ -260,4 +286,8 @@
                 android:visibility="visible"/>
         </FrameLayout>
     </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
 </LinearLayout>

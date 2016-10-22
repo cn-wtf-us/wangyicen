@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="335dp"
     android:layout_centerInParent="true">
 
     <com.feicui.edu.housekeeper.view.MainPieChart
@@ -35,12 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="25"
+        android:textColor="@color/black"
         android:textSize="80sp"
         android:textStyle="bold"
         android:layout_centerInParent="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="%"
         android:textSize="20sp"
         android:layout_alignBaseline="@id/view_main_pie_chart_tv"

@@ -4,7 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.TellistActivity">
+
+    <com.feicui.edu.housekeeper.view.ActionBarView
+        android:id="@+id/view_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+    </com.feicui.edu.housekeeper.view.ActionBarView>
 
     <ListView
         android:id="@+id/list_item"

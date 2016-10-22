@@ -2,12 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:padding="10dp">
 
     <CheckBox
         android:id="@+id/soft_mgr_list_item_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:button="@drawable/softmgr_listview_checkbox"
         android:layout_centerVertical="true"/>
 
     <ImageView
@@ -21,6 +23,7 @@
         android:scaleType="fitXY"/>
     <TextView
         android:id="@+id/soft_mgr_list_item_tv1"
+        android:textColor="@color/black"
         android:layout_toRightOf="@id/soft_mgr_list_item_iv"
         android:layout_alignTop="@+id/soft_mgr_list_item_iv"
         android:layout_width="150dp"
@@ -37,13 +40,17 @@
         android:layout_height="wrap_content"
         android:ellipsize="middle"
         android:singleLine="true"
+        android:textColor="@color/black"
         android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
         />
     <TextView
         android:id="@+id/soft_mgr_list_item_tv3"
         android:layout_alignTop="@+id/soft_mgr_list_item_iv"
         android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
+        android:textColor="@color/black"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_height="wrap_content"
         android:text="2.3.3"
         />

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.AboutActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -11,6 +12,12 @@
         android:layout_height="wrap_content">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_alignBottom="@id/view_action_bar"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
 
 <ImageView
     android:id="@+id/iv"
@@ -24,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:layout_below="@id/iv"
         android:textSize="@dimen/about_size_title"
         android:text="@string/about_text_title"/>
@@ -33,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/about_size_version"
+        android:textColor="@color/black"
         android:text="@string/about_text_version"
         />
 

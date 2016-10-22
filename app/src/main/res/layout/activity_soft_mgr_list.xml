@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.SoftMgrListActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -13,6 +14,10 @@
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,6 +28,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
+            android:divider="@color/lines"
             android:cacheColorHint="@color/transparent">
         </ListView>
 
@@ -49,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
+            android:button="@drawable/softmgr_listview_checkbox"
             android:layout_marginRight="5dp"/>
 
         <Button

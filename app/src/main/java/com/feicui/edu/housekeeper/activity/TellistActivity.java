@@ -17,10 +17,12 @@ import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.TellistAdapter;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.db.DBReader;
+import com.feicui.edu.housekeeper.view.ActionBarView;
 
 
 public class TellistActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
+    private ActionBarView bar;
     private ListView listView;
     private TellistAdapter adapter;
     private int idx = 0;
@@ -29,8 +31,17 @@ public class TellistActivity extends BaseActivity implements AdapterView.OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_tel_list);
         super.onCreate(savedInstanceState);
+        View.OnClickListener on = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TellistActivity.this.finish();
+            }
+        };
+        bar.initActionBar("电话列表", R.drawable.home_left, ActionBarView.ID_BAR, on);
+
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
+
 
     }
 
@@ -40,6 +51,7 @@ public class TellistActivity extends BaseActivity implements AdapterView.OnItemC
         idx = getIntent().getIntExtra("idx", 1);
         listView = (ListView) findViewById(R.id.list_item);
         adapter = new TellistAdapter(this);
+        bar = (ActionBarView) findViewById(R.id.view_action_bar);
     }
 
     @Override

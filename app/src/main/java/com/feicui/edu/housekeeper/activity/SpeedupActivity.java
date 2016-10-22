@@ -49,7 +49,7 @@ public class SpeedupActivity extends BaseActivity {
                 SpeedupActivity.this.finish();
             }
         };
-        bar.initActionBar("手机加速", R.id.iv_left, ActionBarView.ID_BAR, on);
+        bar.initActionBar("手机加速", R.drawable.home_left, ActionBarView.ID_BAR, on);
 
         //设置设备型号
         tv1.setText(DeviceUtil.getPhoneBrand());

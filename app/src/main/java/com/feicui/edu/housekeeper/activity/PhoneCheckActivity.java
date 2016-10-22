@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,9 +30,9 @@ public class PhoneCheckActivity extends BaseActivity {
     private ProgressBar progressBar;
     private TextView textView;//电池的百分比数
     private ListView listView;
+    private LinearLayout layout;
     private PhoneCheckAdapter adapter;
     private BatteryReceiver receiver;
-    private AlertDialog alertDialog;
     private ArrayList<DeviceInfo> deviceInfos;
     private int scale, level, tempreture, voltage;
     private int point;//设置百分比
@@ -47,7 +48,7 @@ public class PhoneCheckActivity extends BaseActivity {
                 PhoneCheckActivity.this.finish();
             }
         };
-        bar.initActionBar("手机检测", R.id.iv_left, ActionBarView.ID_BAR, on);
+        bar.initActionBar("手机检测", R.drawable.home_left, ActionBarView.ID_BAR, on);
         listView.setAdapter(adapter);
     }
 
@@ -57,19 +58,14 @@ public class PhoneCheckActivity extends BaseActivity {
         progressBar = (ProgressBar) findViewById(R.id.phone_check_progressbar);
         textView = (TextView) findViewById(R.id.phone_check_point);
         listView = (ListView) findViewById(R.id.phone_check_lv);
+        layout = (LinearLayout) findViewById(R.id.phone_check_layout);
         deviceInfos = new ArrayList<DeviceInfo>();
         receiver = new BatteryReceiver();
-        alertDialog = new AlertDialog.Builder(this).create();
         IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         //注册广播，动态注册
         registerReceiver(receiver, filter);
         adapter = new PhoneCheckAdapter(this);
 
-        point = Math.round(level / (float)scale * 100);
-
-        textView.setText(point);
-        progressBar.setMax(scale);
-        progressBar.setProgress(point);
 
         //获取列表中的数据
         getData();
@@ -108,13 +104,6 @@ public class PhoneCheckActivity extends BaseActivity {
         }.start();
     }
 
-    public void showDialog(){
-        new AlertDialog.Builder(this)
-                .setTitle("电池电量信息：")
-                .setItems(new String[]{"电池温度"+tempreture+"℃","电池电压"+voltage}, null)
-                .show();
-    }
-
     //设置手机设备数据信息
     private void setData(int pic, String text1, String text2){
         DeviceInfo info= new DeviceInfo();
@@ -126,7 +115,24 @@ public class PhoneCheckActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PhoneCheckActivity.this);
+                builder.setTitle("电池电量信息");
+                builder.setMessage("电池温度:" + tempreture + "℃\n\n电池电压:" + voltage);
+                builder.show();
+            }
+        });
+        progressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(PhoneCheckActivity.this);
+                builder.setTitle("电池电量信息");
+                builder.setMessage("电池温度:" + tempreture + "℃\n\n电池电压:" + voltage);
+                builder.show();
+            }
+        });
     }
 
     @Override
@@ -135,22 +141,28 @@ public class PhoneCheckActivity extends BaseActivity {
         unregisterReceiver(receiver);
     }
 
-    class BatteryReceiver extends BroadcastReceiver{
+    public class BatteryReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
             //获取电池中的信息
             //获取手机总电量
-            scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 0);
+            scale = intent.getIntExtra("scale", 0);
             //获取当前电量
-            level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, 0);
+            level = intent.getIntExtra("level", 0);
             //获取手机电池温度
-            tempreture = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
+            tempreture = intent.getIntExtra("tempreture", 0);
             //获取手机电池电压状态
-            voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
+            voltage = intent.getIntExtra("voltage", 0);
             //获取手机电池健康程度
 //            int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
             //获取手机电池当前状态
 //            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, 0);
+            point = (int) Math.round(level / (float)scale * 100);
+
+            textView.setText(level + "");
+            progressBar.setMax(scale);
+            progressBar.setProgress(point);
+
 
         }
     }

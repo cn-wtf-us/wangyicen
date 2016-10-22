@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.FileMgrListActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -22,6 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="文件数量："/>
         <TextView
             android:id="@+id/file_mgr_list_tv1"
@@ -35,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
             android:text="占用空间："/>
         <TextView
             android:id="@+id/file_mgr_list_tv2"
@@ -46,12 +49,16 @@
             android:textStyle="italic"/>
 
     </LinearLayout>
-    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <ListView
         android:id="@+id/file_mgr_list_lv"
         android:layout_width="match_parent"
         android:cacheColorHint="@color/transparent"
         android:layout_height="0dp"
+        android:divider="@color/lines"
         android:layout_weight="1">
     </ListView>
 

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.SpeedupActivity">
 
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -12,7 +13,10 @@
         android:layout_height="40dp">
 
     </com.feicui.edu.housekeeper.view.ActionBarView>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +27,7 @@
             android:id="@+id/rocket_phone_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="华为"
             android:textSize="14sp"
             android:layout_marginBottom="5dp"
@@ -33,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Android 4.4.4"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:layout_marginBottom="5dp"
             />
@@ -55,7 +61,10 @@
             android:text="1.54G/2.05G"
             android:textColor="@color/blue"
             android:layout_marginBottom="5dp"/>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lines"/>
         <Button
             android:id="@+id/rocket_clean"
             android:layout_width="match_parent"
@@ -75,6 +84,7 @@
                 android:id="@+id/rocket_lv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:divider="@color/lines"
                 android:cacheColorHint="@color/transparent"
                 />
             <ProgressBar
@@ -96,7 +106,8 @@
             <CheckBox
                 android:id="@+id/rocket_all"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:button="@drawable/softmgr_listview_checkbox"/>
             <Button
                 android:id="@+id/rocket_show"
                 android:layout_width="match_parent"

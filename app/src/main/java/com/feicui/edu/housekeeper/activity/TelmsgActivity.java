@@ -15,6 +15,7 @@ import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.db.AssetsDBManager;
 import com.feicui.edu.housekeeper.db.DBReader;
 import com.feicui.edu.housekeeper.entity.TelclassInfo;
+import com.feicui.edu.housekeeper.view.ActionBarView;
 
 import java.io.IOException;
 
@@ -27,6 +28,7 @@ public class TelmsgActivity extends BaseActivity implements AdapterView.OnItemCl
         super.onCreate(savedInstanceState);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+
     }
 
     @Override

@@ -81,14 +81,21 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 //试着接受传递过来的字符串，如果有，说明是从设置界面跳转过来的
-                if (!TextUtils.isEmpty(getIntent().getStringExtra("param"))){
-                    //返回设置界面
-                    LeadActivity.this.finish();
-                    return;
-                }
-                //否则就跳转到主界面
-                startActivity(MainActivity.class);
-                finish();
+                if(className != null && className.equals(SettingActivity.class.getSimpleName())) {
+                    startActivity(LeadActivity.class);
+                }else{
+				startActivity(MainActivity.class);
+				//销毁
+				}
+				finish();
+//                if (!TextUtils.isEmpty(getIntent().getStringExtra("param"))){
+//                    //返回设置界面
+//                    LeadActivity.this.finish();
+//                    return;
+//                }
+//                //否则就跳转到主界面
+//                startActivity(MainActivity.class);
+//                finish();
             }
         });
         //创建适配器
@@ -121,10 +128,7 @@ public class LeadActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        //停止服务
-        Intent ServiceIntent = new Intent(this, MusicService.class);
-        stopService(ServiceIntent);
-        finish();
+
     }
 
 }

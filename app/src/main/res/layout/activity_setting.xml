@@ -4,13 +4,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.SettingActivity">
     <!-- ActionBar 导航条 -->
     <com.feicui.edu.housekeeper.view.ActionBarView
         android:id="@+id/view_action_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content">
+        android:layout_height="40dp"
+        android:layout_width="match_parent">
     </com.feicui.edu.housekeeper.view.ActionBarView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,6 +33,10 @@
                 <ToggleButton
                     style="@style/setting_toggle_button" />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 style="@style/setting_relative_layout">
                 <TextView
@@ -36,6 +46,10 @@
                     android:id="@+id/setting_notification"
                     style="@style/setting_toggle_button" />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 style="@style/setting_relative_layout">
                 <TextView
@@ -44,6 +58,10 @@
                 <ToggleButton
                     style="@style/setting_toggle_button" />
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 android:id="@+id/setting_help"
                 style="@style/setting_relative_layout">
@@ -54,6 +72,10 @@
                 <ImageView
                     style="@style/setting_image_view"/>
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 style="@style/setting_relative_layout">
                 <TextView
@@ -63,6 +85,10 @@
                 <ImageView
                     style="@style/setting_image_view"/>
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 style="@style/setting_relative_layout">
                 <TextView
@@ -72,6 +98,10 @@
                 <ImageView
                     style="@style/setting_image_view"/>
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 style="@style/setting_relative_layout">
                 <TextView
@@ -81,6 +111,10 @@
                 <ImageView
                     style="@style/setting_image_view"/>
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
             <RelativeLayout
                 android:id="@+id/setting_about"
                 style="@style/setting_relative_layout">
@@ -91,6 +125,10 @@
                 <ImageView
                     style="@style/setting_image_view"/>
             </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lines"/>
         </LinearLayout>
     </ScrollView>
 

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.PhoneCheckActivity">
 
 
@@ -12,14 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="40dp">
     </com.feicui.edu.housekeeper.view.ActionBarView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <LinearLayout
+        android:id="@+id/phone_check_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_gravity="center"
         android:background="@drawable/home_entry_item"
         android:clickable="true"
-        android:onClick="showDialog"
         android:orientation="horizontal">
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -29,7 +34,6 @@
             android:max="100"
             android:progress="80"
             android:clickable="true"
-            android:onClick="showDialog"
             android:layout_gravity="center_vertical"
             android:id="@+id/phone_check_progressbar"
             android:progressDrawable="@drawable/phone_check_progressbar"
@@ -50,19 +54,26 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:text="80"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:text="%"/>
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"/>
     <ListView
         android:id="@+id/phone_check_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@color/lines"
+        android:fadingEdge="vertical"
         android:cacheColorHint="@color/transparent">
 
     </ListView>

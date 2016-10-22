@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activity.TelmsgActivity">
     <TextView
         android:id="@+id/tv_tel"
@@ -18,6 +19,7 @@
         android:id="@+id/lv_tel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:divider="@color/lines"
+        android:cacheColorHint="@android:color/transparent"
        />
 </LinearLayout>

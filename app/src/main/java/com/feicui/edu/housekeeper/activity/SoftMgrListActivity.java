@@ -74,7 +74,7 @@ public class SoftMgrListActivity extends BaseActivity {
                 SoftMgrListActivity.this.finish();
             }
         };
-        bar.initActionBar("软件列表",ActionBarView.ID_BAR, ActionBarView.ID_BAR, on);
+        bar.initActionBar("软件列表",R.drawable.home_left, ActionBarView.ID_BAR, on);
         lv.setAdapter(adapter);
         getData();
     }

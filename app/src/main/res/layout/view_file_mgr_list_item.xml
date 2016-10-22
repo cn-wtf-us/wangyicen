@@ -12,6 +12,8 @@
         android:id="@+id/file_mgr_list_item_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:button="@drawable/softmgr_listview_checkbox"
         android:layout_centerVertical="true"/>
 
     <ImageView
@@ -28,6 +30,7 @@
         android:layout_toRightOf="@id/file_mgr_list_item_iv"
         android:layout_alignTop="@+id/file_mgr_list_item_iv"
         android:layout_width="200dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:ellipsize="middle"
         android:singleLine="true"
@@ -40,6 +43,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:ellipsize="middle"
+        android:textColor="@color/black"
         android:singleLine="true"
         android:text="2016-10-17 12:12:45"
         />

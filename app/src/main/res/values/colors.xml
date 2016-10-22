@@ -11,4 +11,5 @@
     <color name="transparent">#00000000</color>
     <color name="circle_soft_mgr">#d69871</color>
     <color name="phone_check">#0d81ed</color>
+    <color name="lines">#b8bbbf</color>
 </resources>

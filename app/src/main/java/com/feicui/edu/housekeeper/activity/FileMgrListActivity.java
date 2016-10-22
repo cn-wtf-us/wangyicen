@@ -83,7 +83,7 @@ public class FileMgrListActivity extends BaseActivity {
                 FileMgrListActivity.this.finish();
             }
         };
-        bar.initActionBar(title, R.id.iv_left, ActionBarView.ID_BAR, on);
+        bar.initActionBar(title, R.drawable.home_left, ActionBarView.ID_BAR, on);
 
     }
 

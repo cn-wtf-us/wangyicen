@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.HomeActivity">
     <!-- ActionBar 导航条 -->
     <com.feicui.edu.housekeeper.view.ActionBarView
@@ -15,6 +16,17 @@
 
 <include layout="@layout/view_main_piechart"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"
+        />
+
     <!-- 主页面选项组 -->
 <include layout="@layout/layout_homeitem"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"
+        />
 </LinearLayout>

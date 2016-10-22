@@ -2,12 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:padding="10dp">
 
     <CheckBox
         android:id="@+id/rocket_list_item_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:button="@drawable/softmgr_listview_checkbox"
         android:layout_centerVertical="true"/>
 
     <ImageView
@@ -24,6 +27,7 @@
         android:layout_toRightOf="@id/rocket_list_item_iv"
         android:layout_alignTop="@+id/rocket_list_item_iv"
         android:layout_width="150dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:ellipsize="middle"
         android:singleLine="true"
@@ -35,6 +39,7 @@
         android:layout_alignBottom="@id/rocket_list_item_iv"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:ellipsize="middle"
         android:singleLine="true"
         android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.base.adapter.MyBaseAdapter;
 import com.feicui.edu.housekeeper.base.utils.CommonUtil;
+import com.feicui.edu.housekeeper.base.utils.FileTypeUtil;
 import com.feicui.edu.housekeeper.entity.FileInfo;
 
 import java.io.File;
@@ -71,16 +72,16 @@ public class FileMgrListAdapter extends MyBaseAdapter<FileInfo> implements Compo
 
         String icon = fileInfo.getIcon();
 
-        if (icon.equals("*/*")){
+        File file = fileInfo.getFile();
+//        String mimeType = FileTypeUtil.getMimeTypeFromFileName(file);
+
+        int pic = context.getResources().getIdentifier(icon, "drawable", context.getPackageName());
+        if (pic != 0){
+            vh.imageView.setImageResource(pic);
+        }else{
             vh.imageView.setImageResource(R.mipmap.ic_launcher);
         }
 
-        //获取mime类型
-        File file = fileInfo.getFile();
-//        String mimeType = FileTypeUtil.getMimeTypeFromFileName(file);
-        int pic = context.getResources().getIdentifier(icon, "drawable", context.getPackageName());
-
-        vh.imageView.setImageResource(pic);
         vh.textView1.setText(file.getName());
 
         long lastModify = file.lastModified();

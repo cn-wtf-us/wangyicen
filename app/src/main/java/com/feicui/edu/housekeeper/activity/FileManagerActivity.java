@@ -122,7 +122,7 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
                 FileManagerActivity.this.finish();
             }
         };
-        bar.initActionBar("软件管理", R.id.iv_left, ActionBarView.ID_BAR, on);
+        bar.initActionBar("文件管理",R.drawable.home_left, ActionBarView.ID_BAR, on);
 
         //每次进入主界面都先清理缓存,将所有属性初始化
         FileManager.getInstance().clearCache();
@@ -207,26 +207,26 @@ public class FileManagerActivity extends BaseActivity implements FileManager.OnD
         long allTextSize = FileManager.getInstance().getAllSize();
 
         if (type.equals(FileTypeUtil.TYPE_APK)){
-            file_mgr_apk_size.setText(Formatter.formatFileSize(this, apkTextSize));
+            file_mgr_apk_size.setText(Formatter.formatFileSize(this, apkTextSize) + "");
 
         }else if (type.equals(FileTypeUtil.TYPE_AUDIO)){
-            file_mgr_ad_size.setText(Formatter.formatFileSize(this, adTextSize));
+            file_mgr_ad_size.setText(Formatter.formatFileSize(this, adTextSize) + "");
 
         }else if (type.equals(FileTypeUtil.TYPE_IMAGE)){
-            file_mgr_pic_size.setText(Formatter.formatFileSize(this, picTextSize));
+            file_mgr_pic_size.setText(Formatter.formatFileSize(this, picTextSize) + "");
 
         }else if (type.equals(FileTypeUtil.TYPE_TXT)){
-            file_mgr_doc_size.setText(Formatter.formatFileSize(this, docTextSize));
+            file_mgr_doc_size.setText(Formatter.formatFileSize(this, docTextSize) + "");
 
         }else if (type.equals(FileTypeUtil.TYPE_VIDEO)){
-            file_mgr_vd_size.setText(Formatter.formatFileSize(this, vdTextSize));
+            file_mgr_vd_size.setText(Formatter.formatFileSize(this, vdTextSize) + "");
 
         }else if (type.equals(FileTypeUtil.TYPE_ZIP)){
-            file_mgr_rar_size.setText(Formatter.formatFileSize(this, rarTextSize));
+            file_mgr_rar_size.setText(Formatter.formatFileSize(this, rarTextSize) + "");
 
         }else {
-            file_mgr_allsize.setText(Formatter.formatFileSize(this, allTextSize));
-            file_mgr_all_size.setText(Formatter.formatFileSize(this, allTextSize));
+            file_mgr_allsize.setText(Formatter.formatFileSize(this, allTextSize) + "");
+            file_mgr_all_size.setText(Formatter.formatFileSize(this, allTextSize) + "");
         }
 
     }

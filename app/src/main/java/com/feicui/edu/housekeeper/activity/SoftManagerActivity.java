@@ -58,7 +58,13 @@ public class SoftManagerActivity extends BaseActivity {
     @Override
     protected void initView() {
         bar = (ActionBarView) findViewById(R.id.view_action_bar);
-        bar.initActionBar("软件管理", ActionBarView.ID_BAR, ActionBarView.ID_BAR, null);
+        View.OnClickListener on = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SoftManagerActivity.this.finish();
+            }
+        };
+        bar.initActionBar("软件管理", R.drawable.home_left, ActionBarView.ID_BAR, on);
         phoneTv = (TextView) findViewById(R.id.soft_mgr_phone_memory);
         SDCardTv = (TextView) findViewById(R.id.soft_mgr_sdcard_memory);
         pb1 = (ProgressBar) findViewById(R.id.progressBar1);
