@@ -120,7 +120,7 @@ public class PhoneCheckActivity extends BaseActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PhoneCheckActivity.this);
                 builder.setTitle("电池电量信息");
-                builder.setMessage("电池温度:" + tempreture + "℃\n\n电池电压:" + voltage);
+                builder.setMessage("电池温度:" + tempreture * 0.1 + "℃\n\n电池电压:" + voltage);
                 builder.show();
             }
         });
@@ -129,7 +129,7 @@ public class PhoneCheckActivity extends BaseActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PhoneCheckActivity.this);
                 builder.setTitle("电池电量信息");
-                builder.setMessage("电池温度:" + tempreture + "℃\n\n电池电压:" + voltage);
+                builder.setMessage("电池温度:" + tempreture * 0.1 + "℃\n\n电池电压:" + voltage);
                 builder.show();
             }
         });
@@ -150,7 +150,7 @@ public class PhoneCheckActivity extends BaseActivity {
             //获取当前电量
             level = intent.getIntExtra("level", 0);
             //获取手机电池温度
-            tempreture = intent.getIntExtra("tempreture", 0);
+            tempreture = intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
             //获取手机电池电压状态
             voltage = intent.getIntExtra("voltage", 0);
             //获取手机电池健康程度
