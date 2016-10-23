@@ -53,5 +53,11 @@
         android:textColor="@color/colorAccent"
         android:text="系统进程"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lines"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/rocket_list_item_tv2"/>
 
 </RelativeLayout>
