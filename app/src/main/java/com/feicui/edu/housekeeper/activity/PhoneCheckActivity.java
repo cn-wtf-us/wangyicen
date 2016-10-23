@@ -12,14 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.feicui.edu.housekeeper.R;
 import com.feicui.edu.housekeeper.adapter.PhoneCheckAdapter;
 import com.feicui.edu.housekeeper.base.activity.BaseActivity;
 import com.feicui.edu.housekeeper.base.utils.DeviceUtil;
 import com.feicui.edu.housekeeper.base.utils.MemoryUtil;
-import com.feicui.edu.housekeeper.base.utils.ToastUtil;
 import com.feicui.edu.housekeeper.entity.DeviceInfo;
 import com.feicui.edu.housekeeper.view.ActionBarView;
 
@@ -158,13 +156,9 @@ public class PhoneCheckActivity extends BaseActivity {
             //获取手机电池健康程度
 //            int health = intent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
             // 是否在充电
-            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-            boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
-                    status == BatteryManager.BATTERY_STATUS_FULL;
-            //如果是充电状态设置充电状态图片
-            if (isCharging) {
-                ToastUtil.show(PhoneCheckActivity.this, "手机正在充电中...", Toast.LENGTH_LONG);
-            }
+//            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+//            boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+//                    status == BatteryManager.BATTERY_STATUS_FULL;
 
             point = (int) Math.round(level / (float)scale * 100);
 

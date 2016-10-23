@@ -39,4 +39,5 @@
     <string name="home_text_tel_mgr">通讯大全</string>
     <string name="home_text_file_mgr">文件管理</string>
     <string name="home_text_clean">垃圾清理</string>
+    <string name="sd_clean">项目正在完善中，敬请期待...</string>
 </resources>

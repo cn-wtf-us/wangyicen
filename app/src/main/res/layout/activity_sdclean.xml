@@ -5,11 +5,19 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.feicui.edu.housekeeper.activity.SDCleanActivity">
+    <com.feicui.edu.housekeeper.view.ActionBarView
+        android:id="@+id/view_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+    </com.feicui.edu.housekeeper.view.ActionBarView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:text="垃圾清理界面"
+        android:layout_centerInParent="true"
+        android:text="@string/sd_clean"
         android:textColor="@color/colorAccent"
         />
 </RelativeLayout>
